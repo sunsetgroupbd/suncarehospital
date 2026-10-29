@@ -17,6 +17,22 @@ import SectionTag from "@/components/ui/SectionTag";
 import { useLanguage } from "@/lib/LanguageContext";
 import { FACILITIES } from "@/lib/constants";
 
+import labImg from "@/public/images/facilities/lab.jpg";
+import radiologyImg from "@/public/images/facilities/radiology.jpg";
+import pharmacyImg from "@/public/images/facilities/pharmacy.jpg";
+import ambulanceImg from "@/public/images/facilities/ambulance.jpg";
+import icuImg from "@/public/images/facilities/icu.jpg";
+import cabinImg from "@/public/images/facilities/cabin.jpg";
+
+const facilityImageMap: Record<string, typeof ambulanceImg> = {
+  pathology: labImg,
+  imaging: radiologyImg,
+  pharmacy: pharmacyImg,
+  ambulance: ambulanceImg,
+  icu: icuImg,
+  rooms: cabinImg,
+};
+
 const iconMap: Record<string, React.ElementType> = {
   FlaskConical: RiTestTubeFill,
   ScanLine: RiScan2Fill,
@@ -58,6 +74,7 @@ export default function Facilities() {
             const isEven = index % 2 === 0;
             const title = lang === "bn" && "titleBn" in facility ? facility.titleBn : facility.title;
             const desc = lang === "bn" && "descriptionBn" in facility ? facility.descriptionBn : facility.description;
+            const imageSrc = facilityImageMap[facility.id] ?? facility.image;
 
             return (
               <div
@@ -70,7 +87,7 @@ export default function Facilities() {
                 <div className="w-full lg:w-1/2">
                   <div className="relative aspect-[16/10] sm:aspect-[16/9] rounded-xl bg-surface-100 border border-gray-100 overflow-hidden shadow-elevated group">
                     <Image
-                      src={facility.image}
+                      src={imageSrc}
                       alt={title}
                       fill
                       sizes="(max-width: 1024px) 100vw, 600px"
