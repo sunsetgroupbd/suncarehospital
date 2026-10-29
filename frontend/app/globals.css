@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+/* ─────────────────────────────────────────────
+   Brand Design System — Sun Care Hospital
+   Executive Medical Palette (No harsh borders)
+───────────────────────────────────────────── */
+@theme inline {
+  /* Solid Brand Colors */
+  --color-brand-green-900: #071D12;
+  --color-brand-green-800: #0B2518;
+  --color-brand-green-700: #137A3B;
+  --color-brand-green-600: #1B9A47;
+  --color-brand-green-500: #2BB658;
+  --color-brand-green-100: #EBF5EE;
+  --color-brand-green-50: #F4FAF6;
+
+  --color-brand-red-600: #D8131B;
+  --color-brand-red-500: #ED1C24;
+  --color-brand-red-50: #FDF2F2;
+
+  --color-surface-50: #F8FAF9;
+  --color-surface-100: #F1F5F3;
+  --color-surface-200: #E5EBE7;
+
+  --color-ink-900: #0F2A1D;
+  --color-ink-700: #1E3A2F;
+  --color-ink-600: #475569;
+  --color-ink-400: #94A3B8;
+
+  /* Typography */
+  --font-poppins: "Poppins", sans-serif;
+  --font-sans: var(--font-poppins);
+
+  /* Radius */
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+
+  /* Clean subtle shadows */
+  --shadow-subtle: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px -1px rgba(0, 0, 0, 0.04);
+  --shadow-elevated: 0 4px 20px -2px rgba(15, 42, 29, 0.06);
+}
+
+/* ─────────────────────────────────────────────
+   Global base styles
+───────────────────────────────────────────── */
+:root {
+  --background: #ffffff;
+  --foreground: #0F2A1D;
+  scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+  border-color: #f1f5f3;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+html {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+body {
+  font-family: var(--font-poppins), "Segoe UI", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #ffffff;
+}
+
+:focus-visible {
+  outline: 2px solid #1B9A47;
+  outline-offset: 2px;
+}
+
+[id] {
+  scroll-margin-top: 80px;
+}
