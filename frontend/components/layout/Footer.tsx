@@ -50,10 +50,10 @@ export default function Footer() {
               href={SITE.parentCompanyUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-white/10 hover:bg-white/15 text-emerald-300 hover:text-emerald-200 text-xs font-medium border border-white/15 transition-colors"
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-white/10 hover:bg-white/15 text-emerald-300 hover:text-emerald-200 text-xs font-medium border border-white/15 transition-colors no-underline"
             >
               <RiHospitalFill size={15} className="text-emerald-400" aria-hidden="true" />
-              <span className="underline underline-offset-2">{SITE.parentCompany}</span>
+              <span className="no-underline">{SITE.parentCompany}</span>
             </a>
           </div>
 

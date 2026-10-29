@@ -164,7 +164,7 @@ export default function DevelopmentNoticeModal() {
                 href={SITE.parentCompanyUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-brand-green-800 underline underline-offset-2 transition-colors"
+                className="hover:text-brand-green-800 transition-colors no-underline"
               >
                 {isBn ? "সানসেট কুয়াকাটা হোটেল এন্ড রিসোর্ট লিঃ-এর একটি সহযোগী প্রতিষ্ঠান" : "A Project by Sunset Kuakata Hotel & Resort Ltd."}
               </a>
