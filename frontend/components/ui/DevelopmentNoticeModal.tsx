@@ -1,51 +1,35 @@
 "use client";
 // components/ui/DevelopmentNoticeModal.tsx
 // Professional notice popup informing visitors that the hospital and web portal are under active development.
+// Appears on every refresh / page load as requested.
 
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { RiCloseLine, RiPhoneFill, RiMapPin2Fill, RiInformationFill, RiArrowRightLine } from "react-icons/ri";
 import { CONTACT, ADDRESS, SITE } from "@/lib/constants";
 
-const STORAGE_KEY = "suncare_dev_notice_dismissed";
-const DISMISS_DURATION_MS = 24 * 60 * 60 * 1000; // 24 hours
-
 export default function DevelopmentNoticeModal() {
   const [isOpen, setIsOpen] = useState(false);
-  const [dontShowAgain, setDontShowAgain] = useState(true);
 
-  // Check if notice was recently dismissed
+  // Show modal on every fresh page load / refresh
   useEffect(() => {
+    // Clear any previous dismiss flags
     try {
-      const dismissedAt = localStorage.getItem(STORAGE_KEY);
-      if (dismissedAt) {
-        const timeElapsed = Date.now() - parseInt(dismissedAt, 10);
-        if (timeElapsed < DISMISS_DURATION_MS) {
-          return; // Do not show if dismissed within 24 hours
-        }
-      }
+      localStorage.removeItem("suncare_dev_notice_dismissed");
     } catch {
-      // Storage access blocked or unavailable
+      // Ignore storage errors
     }
 
-    // Brief delay so page settles before modal appears smoothly
     const timer = setTimeout(() => {
       setIsOpen(true);
-    }, 600);
+    }, 400);
 
     return () => clearTimeout(timer);
   }, []);
 
   const handleClose = useCallback(() => {
     setIsOpen(false);
-    if (dontShowAgain) {
-      try {
-        localStorage.setItem(STORAGE_KEY, Date.now().toString());
-      } catch {
-        // Ignore storage errors
-      }
-    }
-  }, [dontShowAgain]);
+  }, []);
 
   // Handle ESC key press
   useEffect(() => {
@@ -88,7 +72,7 @@ export default function DevelopmentNoticeModal() {
           type="button"
           onClick={handleClose}
           aria-label="Close notice"
-          className="absolute top-4 right-4 p-1.5 text-gray-400 hover:text-ink-900 rounded-lg hover:bg-gray-100 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-green-500"
+          className="absolute top-4 right-4 p-1.5 text-gray-400 hover:text-ink-900 rounded-lg hover:bg-gray-100 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-green-500 cursor-pointer"
         >
           <RiCloseLine className="w-5 h-5" />
         </button>
@@ -166,7 +150,7 @@ export default function DevelopmentNoticeModal() {
           </div>
 
           {/* Action Buttons */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
             <button
               type="button"
               onClick={handleClose}
@@ -183,19 +167,6 @@ export default function DevelopmentNoticeModal() {
               <RiPhoneFill className="w-4 h-4" />
               <span>Call Hotline</span>
             </a>
-          </div>
-
-          {/* Do not show again checkbox */}
-          <div className="flex items-center justify-between pt-3 border-t border-gray-100 text-xs text-ink-500">
-            <label className="flex items-center gap-2 cursor-pointer select-none">
-              <input
-                type="checkbox"
-                checked={dontShowAgain}
-                onChange={(e) => setDontShowAgain(e.target.checked)}
-                className="w-3.5 h-3.5 text-brand-green-600 rounded border-gray-300 focus:ring-brand-green-500 cursor-pointer"
-              />
-              <span>Do not show this notice again for 24 hours</span>
-            </label>
           </div>
         </div>
       </div>
