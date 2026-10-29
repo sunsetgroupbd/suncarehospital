@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import { SITE, CONTACT, ADDRESS } from "@/lib/constants";
+import DevelopmentNoticeModal from "@/components/ui/DevelopmentNoticeModal";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -242,6 +243,7 @@ export default function RootLayout({ children }: LayoutProps) {
         />
       </head>
       <body className="min-h-full flex flex-col antialiased bg-white text-ink-900">
+        <DevelopmentNoticeModal />
         {children}
       </body>
     </html>
