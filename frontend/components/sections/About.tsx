@@ -1,12 +1,22 @@
+"use client";
 // components/sections/About.tsx
 import Image from "next/image";
 import { RiHeartPulseFill, RiHospitalFill } from "react-icons/ri";
 import SectionTag from "@/components/ui/SectionTag";
 import StatCounter from "@/components/ui/StatCounter";
-import { t } from "@/lib/content";
-import { STATS, SITE } from "@/lib/constants";
+import { useLanguage } from "@/lib/LanguageContext";
+import { SITE } from "@/lib/constants";
 
 export default function About() {
+  const { t, lang } = useLanguage();
+
+  const stats = [
+    { value: "100+", label: lang === "bn" ? "আধুনিক হাসপাতাল শয্যা" : "Modern Hospital Beds" },
+    { value: "12+", label: lang === "bn" ? "বিশেষায়িত চিকিৎসা বিভাগ" : "Specialized Departments" },
+    { value: "35+", label: lang === "bn" ? "অভিজ্ঞ বিশেষজ্ঞ ডাক্তার" : "Consultant Specialists" },
+    { value: "24/7", label: lang === "bn" ? "জরুরি ও আইসিইউ সেবা" : "Emergency & Critical Care" },
+  ];
+
   return (
     <section
       id="about"
@@ -34,7 +44,7 @@ export default function About() {
                 <div className="flex items-center gap-2 px-3.5 py-1.5 bg-white rounded-md border border-gray-100 shadow-subtle">
                   <RiHeartPulseFill size={16} className="text-brand-green-600 flex-shrink-0" aria-hidden="true" />
                   <span className="text-xs font-bold text-ink-900 tracking-wider uppercase">
-                    Patient-First Healthcare
+                    {lang === "bn" ? "রোগী-বান্ধব উন্নত স্বাস্থ্যসেবা" : "Patient-First Healthcare"}
                   </span>
                 </div>
 
@@ -90,7 +100,7 @@ export default function About() {
           </div>
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-            {STATS.map((stat) => (
+            {stats.map((stat) => (
               <div
                 key={stat.label}
                 className="bg-surface-50 rounded-xl p-6 border border-gray-100 shadow-subtle text-center flex flex-col items-center justify-center hover:border-brand-green-500 transition-colors"

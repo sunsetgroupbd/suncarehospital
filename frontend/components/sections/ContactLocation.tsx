@@ -1,11 +1,13 @@
+"use client";
 // components/sections/ContactLocation.tsx
 import { RiMapPin2Fill, RiPhoneFill, RiCompass3Fill, RiFacebookCircleFill } from "react-icons/ri";
 import SectionTag from "@/components/ui/SectionTag";
 import Button from "@/components/ui/Button";
-import { t } from "@/lib/content";
+import { useLanguage } from "@/lib/LanguageContext";
 import { CONTACT, ADDRESS } from "@/lib/constants";
 
 export default function ContactLocation() {
+  const { t } = useLanguage();
   const mapsDirections = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ADDRESS.mapQuery)}`;
 
   return (
@@ -49,15 +51,17 @@ export default function ContactLocation() {
                   <br />
                   {ADDRESS.line2},
                   <br />
-                  {ADDRESS.city}, Bangladesh
+                  {ADDRESS.city}, {ADDRESS.country}
                 </address>
               </div>
-              <div className="mt-5">
+
+              <div className="mt-4 pt-4 border-t border-gray-100">
                 <Button
                   href={mapsDirections}
                   external
-                  variant="outline"
                   size="sm"
+                  variant="outline"
+                  className="w-full"
                 >
                   <RiCompass3Fill size={16} aria-hidden="true" />
                   <span>{t.contact.directionsBtn}</span>
@@ -65,86 +69,95 @@ export default function ContactLocation() {
               </div>
             </div>
 
-            {/* Emergency Hotline Card */}
-            <div className="bg-white rounded-xl p-6 sm:p-7 border border-gray-100 shadow-subtle">
-              <h3 className="text-xs font-bold text-ink-600 uppercase tracking-widest mb-4">
+            {/* Phone lines card */}
+            <div className="bg-white rounded-xl p-6 sm:p-7 border border-gray-100 shadow-subtle flex flex-col gap-4">
+              <h3 className="text-xs font-bold text-ink-600 uppercase tracking-widest">
                 {t.contact.phoneLabel}
               </h3>
-              <div className="space-y-4">
-                <a
-                  href={`tel:${CONTACT.phone1Raw}`}
-                  className="flex items-center gap-3.5 text-ink-900 hover:text-brand-green-600 transition-colors group"
-                  aria-label={`Primary phone: ${CONTACT.phone1}`}
-                >
-                  <div className="w-10 h-10 rounded-lg bg-brand-green-100 group-hover:bg-brand-green-200 text-brand-green-700 flex items-center justify-center transition-colors">
-                    <RiPhoneFill size={20} />
-                  </div>
+              
+              <div className="flex items-center justify-between gap-4 p-3.5 rounded-lg bg-brand-green-50 border border-brand-green-100">
+                <div className="flex items-center gap-3">
+                  <RiPhoneFill size={18} className="text-brand-green-700 flex-shrink-0" aria-hidden="true" />
                   <div>
-                    <div className="font-bold text-sm sm:text-base">{CONTACT.phone1}</div>
-                    <div className="text-xs text-brand-green-700 font-semibold">24/7 Primary Emergency Line</div>
+                    <div className="text-xs text-brand-green-800 font-medium">Primary Hotline (24/7)</div>
+                    <div className="text-sm font-bold text-ink-900">{CONTACT.phone1}</div>
                   </div>
-                </a>
+                </div>
+                <Button href={`tel:${CONTACT.phone1Raw}`} size="sm">
+                  {t.contact.callBtn}
+                </Button>
+              </div>
 
-                <a
-                  href={`tel:${CONTACT.phone2Raw}`}
-                  className="flex items-center gap-3.5 text-ink-900 hover:text-brand-green-600 transition-colors group"
-                  aria-label={`Secondary phone: ${CONTACT.phone2}`}
-                >
-                  <div className="w-10 h-10 rounded-lg bg-surface-100 group-hover:bg-brand-green-100 text-ink-700 group-hover:text-brand-green-700 flex items-center justify-center transition-colors">
-                    <RiPhoneFill size={20} />
-                  </div>
+              <div className="flex items-center justify-between gap-4 p-3.5 rounded-lg bg-surface-50 border border-gray-100">
+                <div className="flex items-center gap-3">
+                  <RiPhoneFill size={18} className="text-ink-600 flex-shrink-0" aria-hidden="true" />
                   <div>
-                    <div className="font-bold text-sm sm:text-base">{CONTACT.phone2}</div>
-                    <div className="text-xs text-ink-600">Administrative Line</div>
+                    <div className="text-xs text-ink-600 font-medium">Hospital Reception</div>
+                    <div className="text-sm font-bold text-ink-900">{CONTACT.phone2}</div>
                   </div>
-                </a>
+                </div>
+                <Button
+                  href={`tel:${CONTACT.phone2Raw}`}
+                  size="sm"
+                  variant="outline"
+                >
+                  {t.contact.callBtn}
+                </Button>
               </div>
             </div>
 
             {/* Social card */}
-            <div className="bg-white rounded-xl p-6 sm:p-7 border border-gray-100 shadow-subtle">
-              <h3 className="text-xs font-bold text-ink-600 uppercase tracking-widest mb-3">
-                {t.contact.followLabel}
-              </h3>
-              <a
+            <div className="bg-white rounded-xl p-6 sm:p-7 border border-gray-100 shadow-subtle flex items-center justify-between gap-4">
+              <div className="flex items-center gap-3.5">
+                <div className="w-10 h-10 rounded-lg bg-emerald-50 text-brand-green-700 flex items-center justify-center flex-shrink-0">
+                  <RiFacebookCircleFill size={24} aria-hidden="true" />
+                </div>
+                <div>
+                  <div className="text-xs font-bold text-ink-900">{t.contact.followLabel}</div>
+                  <div className="text-xs text-ink-600">fb.com/suncarehospital</div>
+                </div>
+              </div>
+              <Button
                 href={CONTACT.facebook}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2.5 px-4 py-2.5 rounded-lg bg-[#0F2A1D] hover:bg-[#137A3B] text-white text-sm font-semibold transition-colors"
-                aria-label="Follow Sun Care Hospital on Facebook (opens in new tab)"
+                external
+                size="sm"
+                variant="outline"
               >
-                <RiFacebookCircleFill size={18} />
-                <span>facebook.com/suncarehospital</span>
-              </a>
+                Visit Page
+              </Button>
             </div>
+
           </div>
 
-          {/* Right: Map Embed (7 cols) with rounded-xl */}
-          <div className="lg:col-span-7 bg-white rounded-xl overflow-hidden border border-gray-100 shadow-subtle">
-            <div className="p-4 sm:p-5 border-b border-gray-100 flex items-center justify-between">
-              <h3 className="text-sm font-bold text-ink-900 flex items-center gap-2">
-                <RiMapPin2Fill size={18} className="text-brand-green-600" aria-hidden="true" />
-                <span>Bosila Garden City, Mohammadpur, Dhaka 1207</span>
-              </h3>
-              <a
-                href={mapsDirections}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xs text-brand-green-700 hover:text-brand-green-800 font-bold transition-colors"
-              >
-                Open Google Maps →
-              </a>
-            </div>
+          {/* Right: Interactive Map (7 cols) */}
+          <div className="lg:col-span-7">
+            <div className="bg-white rounded-xl p-3 border border-gray-100 shadow-subtle">
+              <div className="relative w-full h-80 sm:h-96 md:h-[440px] rounded-lg overflow-hidden bg-surface-100">
+                <iframe
+                  src={ADDRESS.mapEmbed}
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen={false}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Sun Care Hospital location in Bosila Garden City, Mohammadpur, Dhaka"
+                  className="w-full h-full"
+                />
+              </div>
 
-            <div className="relative aspect-[4/3] md:aspect-[16/11]">
-              <iframe
-                src={ADDRESS.mapEmbed}
-                className="w-full h-full border-0"
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Sun Care Hospital location map"
-              />
+              {/* Map footer helper */}
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 p-3 text-xs text-ink-600">
+                <span>Bosila Garden City, Mohammadpur, Dhaka-1207</span>
+                <a
+                  href={mapsDirections}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-brand-green-700 hover:text-brand-green-800 font-semibold"
+                >
+                  Open in Google Maps &rarr;
+                </a>
+              </div>
             </div>
           </div>
 

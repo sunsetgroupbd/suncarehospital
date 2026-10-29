@@ -1,13 +1,21 @@
 import type { Metadata, Viewport } from "next";
-import { Poppins } from "next/font/google";
+import { Poppins, Hind_Siliguri } from "next/font/google";
 import "./globals.css";
 import { SITE, CONTACT, ADDRESS } from "@/lib/constants";
 import DevelopmentNoticeModal from "@/components/ui/DevelopmentNoticeModal";
+import { LanguageProvider } from "@/lib/LanguageContext";
 
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
   variable: "--font-poppins",
+  display: "swap",
+});
+
+const hindSiliguri = Hind_Siliguri({
+  subsets: ["bengali", "latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-hind-siliguri",
   display: "swap",
 });
 
@@ -235,16 +243,18 @@ interface LayoutProps {
 
 export default function RootLayout({ children }: LayoutProps) {
   return (
-    <html lang="en" className={`${poppins.variable} h-full`}>
+    <html lang="en" className={`${poppins.variable} ${hindSiliguri.variable} h-full`}>
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="min-h-full flex flex-col antialiased bg-white text-ink-900">
-        {children}
-        <DevelopmentNoticeModal />
+      <body className="min-h-full flex flex-col antialiased bg-white text-ink-900 font-sans">
+        <LanguageProvider>
+          {children}
+          <DevelopmentNoticeModal />
+        </LanguageProvider>
       </body>
     </html>
   );

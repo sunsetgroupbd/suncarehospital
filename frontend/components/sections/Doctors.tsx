@@ -1,12 +1,15 @@
+"use client";
 // components/sections/Doctors.tsx
 import { RiUser3Fill, RiCalendarFill } from "react-icons/ri";
 import SectionTag from "@/components/ui/SectionTag";
 import Card from "@/components/ui/Card";
 import Button from "@/components/ui/Button";
-import { t } from "@/lib/content";
+import { useLanguage } from "@/lib/LanguageContext";
 import { DOCTORS } from "@/lib/constants";
 
 export default function Doctors() {
+  const { t, lang } = useLanguage();
+
   return (
     <section
       id="doctors"
@@ -49,29 +52,28 @@ export default function Doctors() {
                 <RiUser3Fill size={36} />
               </div>
 
-              {/* Info */}
-              <h3 className="text-ink-900 font-bold text-base mb-1">
-                {doc.name}
+              <h3 className="font-bold text-ink-900 text-lg mb-1 leading-snug">
+                {lang === "bn" ? "বিশেষজ্ঞ কনসালটেন্ট" : doc.name}
               </h3>
-              
-              <div className="text-brand-green-700 text-xs font-semibold mb-2 px-2.5 py-1 bg-brand-green-50 rounded-md border border-brand-green-200/60">
+              <p className="text-xs font-semibold text-brand-green-700 mb-2">
                 {doc.specialty}
-              </div>
-              
-              <p className="text-ink-600 text-xs leading-relaxed mb-6">
+              </p>
+              <p className="text-xs text-ink-600 mb-6 leading-relaxed">
                 {doc.qualification}
               </p>
 
-              <div className="w-full mt-auto">
-                <Button href="#appointment" size="sm" variant="outline" className="w-full text-xs">
-                  <RiCalendarFill size={14} aria-hidden="true" />
-                  <span>Book Visit</span>
-                </Button>
-              </div>
+              <Button
+                href="#appointment"
+                size="sm"
+                variant="outline"
+                className="w-full mt-auto"
+              >
+                <RiCalendarFill size={15} aria-hidden="true" />
+                <span>{lang === "bn" ? "বুকিং দিন" : "Book Visit"}</span>
+              </Button>
             </Card>
           ))}
         </div>
-
       </div>
     </section>
   );

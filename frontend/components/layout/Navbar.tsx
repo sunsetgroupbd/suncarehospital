@@ -1,6 +1,7 @@
 "use client";
 // components/layout/Navbar.tsx
 // Sticky navbar: transparent on top, solid white with very subtle bottom border on scroll.
+// Bilingual support with active language toggle for desktop & mobile.
 
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
@@ -8,10 +9,12 @@ import Link from "next/link";
 import { RiPhoneFill, RiMenuLine, RiCloseLine } from "react-icons/ri";
 import { NAV_LINKS, CONTACT, SITE } from "@/lib/constants";
 import Button from "@/components/ui/Button";
+import { useLanguage } from "@/lib/LanguageContext";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const { lang, setLang, t } = useLanguage();
 
   const handleScroll = useCallback(() => {
     setScrolled(window.scrollY > 20);
@@ -78,20 +81,49 @@ export default function Navbar() {
             </Link>
 
             {/* Desktop nav links */}
-            <div className="hidden lg:flex items-center gap-7">
-              {NAV_LINKS.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className="text-sm font-semibold text-ink-700 hover:text-brand-green-600 transition-colors py-1"
-                >
-                  {link.label}
-                </a>
-              ))}
+            <div className="hidden lg:flex items-center gap-6 xl:gap-7">
+              {NAV_LINKS.map((link) => {
+                const label = lang === "bn" && "labelBn" in link ? link.labelBn : link.label;
+                return (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    className="text-sm font-semibold text-ink-700 hover:text-brand-green-600 transition-colors py-1"
+                  >
+                    {label}
+                  </a>
+                );
+              })}
             </div>
 
-            {/* Desktop CTA */}
-            <div className="hidden lg:flex items-center gap-4">
+            {/* Desktop CTA & Language Toggle */}
+            <div className="hidden lg:flex items-center gap-3.5">
+              {/* Language Switcher */}
+              <div className="inline-flex items-center bg-gray-100 rounded-lg p-0.5 border border-gray-200">
+                <button
+                  type="button"
+                  onClick={() => setLang("en")}
+                  className={`px-2 py-1 rounded text-xs font-semibold transition-colors cursor-pointer ${
+                    lang === "en"
+                      ? "bg-white text-brand-green-700 shadow-sm"
+                      : "text-ink-600 hover:text-ink-900"
+                  }`}
+                >
+                  EN
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setLang("bn")}
+                  className={`px-2 py-1 rounded text-xs font-semibold transition-colors cursor-pointer ${
+                    lang === "bn"
+                      ? "bg-white text-brand-green-700 shadow-sm"
+                      : "text-ink-600 hover:text-ink-900"
+                  }`}
+                >
+                  বাং
+                </button>
+              </div>
+
               <a
                 href={`tel:${CONTACT.phone1Raw}`}
                 className="flex items-center gap-2 text-sm font-semibold text-ink-700 hover:text-brand-green-600 transition-colors"
@@ -102,25 +134,37 @@ export default function Navbar() {
                 </div>
                 <span className="hidden xl:inline">{CONTACT.phone1}</span>
               </a>
+
               <Button href="#appointment" size="sm">
-                Book Appointment
+                {t.nav.bookAppointment}
               </Button>
             </div>
 
             {/* Mobile menu toggle */}
-            <button
-              className="lg:hidden p-2 rounded-lg text-ink-900 hover:bg-surface-100 transition-colors"
-              onClick={() => setMenuOpen((v) => !v)}
-              aria-expanded={menuOpen}
-              aria-controls="mobile-menu"
-              aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
-            >
-              {menuOpen ? (
-                <RiCloseLine size={24} aria-hidden="true" />
-              ) : (
-                <RiMenuLine size={24} aria-hidden="true" />
-              )}
-            </button>
+            <div className="flex items-center gap-2 lg:hidden">
+              {/* Mobile Language Switcher */}
+              <button
+                type="button"
+                onClick={() => setLang(lang === "en" ? "bn" : "en")}
+                className="px-2 py-1 rounded-md bg-gray-100 border border-gray-200 text-xs font-bold text-brand-green-700 cursor-pointer"
+              >
+                {lang === "en" ? "বাংলা" : "EN"}
+              </button>
+
+              <button
+                className="p-2 rounded-lg text-ink-900 hover:bg-surface-100 transition-colors cursor-pointer"
+                onClick={() => setMenuOpen((v) => !v)}
+                aria-expanded={menuOpen}
+                aria-controls="mobile-menu"
+                aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
+              >
+                {menuOpen ? (
+                  <RiCloseLine size={24} aria-hidden="true" />
+                ) : (
+                  <RiMenuLine size={24} aria-hidden="true" />
+                )}
+              </button>
+            </div>
           </div>
         </div>
       </nav>
@@ -172,18 +216,52 @@ export default function Navbar() {
 
         <nav className="flex-1 p-5 overflow-y-auto">
           <ul className="space-y-1">
-            {NAV_LINKS.map((link) => (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  className="block px-3.5 py-2.5 rounded-lg text-ink-900 font-medium hover:bg-brand-green-100 hover:text-brand-green-800 transition-colors text-sm"
-                  onClick={() => setMenuOpen(false)}
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
+            {NAV_LINKS.map((link) => {
+              const label = lang === "bn" && "labelBn" in link ? link.labelBn : link.label;
+              return (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    className="block px-3.5 py-2.5 rounded-lg text-ink-900 font-medium hover:bg-brand-green-100 hover:text-brand-green-800 transition-colors text-sm"
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    {label}
+                  </a>
+                </li>
+              );
+            })}
           </ul>
+
+          {/* Drawer Language Switcher */}
+          <div className="mt-6 pt-5 border-t border-gray-100">
+            <div className="text-xs font-semibold text-ink-500 mb-2">
+              {lang === "bn" ? "ভাষা পরিবর্তন করুন" : "Select Language"}
+            </div>
+            <div className="grid grid-cols-2 gap-2">
+              <button
+                type="button"
+                onClick={() => setLang("en")}
+                className={`py-2 text-xs font-bold rounded-lg border text-center transition-colors cursor-pointer ${
+                  lang === "en"
+                    ? "bg-brand-green-600 text-white border-brand-green-600"
+                    : "bg-gray-50 text-ink-700 border-gray-200"
+                }`}
+              >
+                English
+              </button>
+              <button
+                type="button"
+                onClick={() => setLang("bn")}
+                className={`py-2 text-xs font-bold rounded-lg border text-center transition-colors cursor-pointer ${
+                  lang === "bn"
+                    ? "bg-brand-green-600 text-white border-brand-green-600"
+                    : "bg-gray-50 text-ink-700 border-gray-200"
+                }`}
+              >
+                বাংলা
+              </button>
+            </div>
+          </div>
         </nav>
 
         <div className="p-5 border-t border-gray-100 space-y-3">
@@ -197,7 +275,7 @@ export default function Navbar() {
             {CONTACT.phone1}
           </a>
           <Button href="#appointment" className="w-full" size="sm">
-            Book Appointment
+            {t.nav.bookAppointment}
           </Button>
         </div>
       </div>

@@ -8,6 +8,7 @@ import QuickAccess from "@/components/sections/QuickAccess";
 import About from "@/components/sections/About";
 import Departments from "@/components/sections/Departments";
 import Facilities from "@/components/sections/Facilities";
+import Ownership from "@/components/sections/Ownership";
 import WhyChooseUs from "@/components/sections/WhyChooseUs";
 import Doctors from "@/components/sections/Doctors";
 import AppointmentForm from "@/components/sections/AppointmentForm";
@@ -39,7 +40,10 @@ export default function HomePage() {
         {/* 5. Facilities */}
         <Facilities />
 
-        {/* 6. Why Choose Us */}
+        {/* 6. Hospital Share & Ownership Investment */}
+        <Ownership />
+
+        {/* 7. Why Choose Us */}
         <WhyChooseUs />
 
         {/* 7. Doctors */}

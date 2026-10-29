@@ -1,12 +1,14 @@
+"use client";
 // components/layout/Footer.tsx
 import Image from "next/image";
 import Link from "next/link";
 import { RiPhoneFill, RiMapPin2Fill, RiHospitalFill, RiFacebookCircleFill } from "react-icons/ri";
 import { SITE, CONTACT, ADDRESS, NAV_LINKS } from "@/lib/constants";
-import { t } from "@/lib/content";
+import { useLanguage } from "@/lib/LanguageContext";
 
 export default function Footer() {
   const year = SITE.copyrightYear;
+  const { t, lang } = useLanguage();
 
   return (
     <footer
@@ -56,22 +58,25 @@ export default function Footer() {
               {t.footer.quickLinks}
             </h3>
             <ul className="space-y-3">
-              {NAV_LINKS.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    className="text-slate-300 text-sm hover:text-emerald-400 transition-colors"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
+              {NAV_LINKS.map((link) => {
+                const label = lang === "bn" && "labelBn" in link ? link.labelBn : link.label;
+                return (
+                  <li key={link.href}>
+                    <a
+                      href={link.href}
+                      className="text-slate-300 text-sm hover:text-emerald-400 transition-colors"
+                    >
+                      {label}
+                    </a>
+                  </li>
+                );
+              })}
               <li>
                 <a
                   href="#appointment"
                   className="text-emerald-400 text-sm font-semibold hover:text-emerald-300 transition-colors"
                 >
-                  Book Appointment
+                  {t.nav.bookAppointment}
                 </a>
               </li>
             </ul>
@@ -122,7 +127,9 @@ export default function Footer() {
               {t.footer.followUs}
             </h3>
             <p className="text-slate-300 text-sm mb-4 leading-relaxed font-normal">
-              Follow our official Facebook page for health guidelines and clinic announcements.
+              {lang === "bn"
+                ? "আমাদের অফিসিয়াল ফেসবুক পেজ ফলো করে স্বাস্থ্য পরামর্শ ও সর্বশেষ নোটিশ জানুন।"
+                : "Follow our official Facebook page for health guidelines and clinic announcements."}
             </p>
             <a
               href={CONTACT.facebook}
@@ -144,8 +151,8 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400">
           <p>© {year} {SITE.name}. All rights reserved.</p>
           <div className="flex items-center gap-6">
-            <span>Clinical Care & Diagnostics</span>
-            <span>24/7 Emergency Line</span>
+            <span>{lang === "bn" ? "ক্লিনিক্যাল সেবা ও ডায়াগনস্টিক" : "Clinical Care & Diagnostics"}</span>
+            <span>{lang === "bn" ? "২৪/৭ জরুরি হটলাইন" : "24/7 Emergency Line"}</span>
           </div>
         </div>
       </div>

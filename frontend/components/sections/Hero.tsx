@@ -1,3 +1,4 @@
+"use client";
 // components/sections/Hero.tsx
 import Image from "next/image";
 import {
@@ -8,10 +9,11 @@ import {
 } from "react-icons/ri";
 import { FaAmbulance } from "react-icons/fa";
 import Button from "@/components/ui/Button";
-import { t } from "@/lib/content";
-import { CONTACT, SITE, ADDRESS } from "@/lib/constants";
+import { useLanguage } from "@/lib/LanguageContext";
+import { CONTACT, SITE } from "@/lib/constants";
 
 export default function Hero() {
+  const { t } = useLanguage();
   const trustChips = t.hero.trustChips;
   const headlineLines = t.hero.headline.split("\n");
 
@@ -118,27 +120,37 @@ export default function Hero() {
 
                 {/* Bottom overlay badge: location info */}
                 <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-sm rounded-lg p-3 border border-gray-100 shadow-subtle flex items-center justify-between gap-3">
-                  <div className="flex items-center gap-2.5 min-w-0">
-                    <div className="w-8 h-8 rounded-md bg-brand-green-100 text-brand-green-700 flex items-center justify-center flex-shrink-0">
-                      <RiMapPin2Fill size={16} aria-hidden="true" />
-                    </div>
-                    <div className="truncate">
-                      <div className="text-xs font-bold text-ink-900 truncate">{ADDRESS.line2}</div>
-                      <div className="text-[11px] text-ink-600">{ADDRESS.city}</div>
-                    </div>
+                  <div className="flex items-center gap-2 text-xs font-medium text-ink-800 truncate">
+                    <RiMapPin2Fill size={15} className="text-brand-green-600 flex-shrink-0" aria-hidden="true" />
+                    <span className="truncate">Bosila Garden City, Mohammadpur</span>
                   </div>
-
                   <a
                     href={`tel:${CONTACT.phone1Raw}`}
-                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-brand-red-500 hover:bg-brand-red-600 text-white text-xs font-bold transition-colors flex-shrink-0"
-                    aria-label={`Call emergency: ${CONTACT.phone1}`}
+                    className="flex-shrink-0 text-xs font-bold text-brand-green-700 hover:text-brand-green-800 bg-brand-green-100 px-2.5 py-1 rounded-md"
                   >
-                    <FaAmbulance size={14} aria-hidden="true" />
-                    <span>24/7 Hotline</span>
+                    24/7 Hotline
                   </a>
                 </div>
               </div>
 
+              {/* Emergency response card below building image */}
+              <div className="mt-4 bg-white rounded-xl p-4 border border-gray-100 shadow-subtle flex items-center justify-between gap-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-emerald-50 border border-emerald-100 flex items-center justify-center text-brand-green-700">
+                    <FaAmbulance size={18} aria-hidden="true" />
+                  </div>
+                  <div>
+                    <div className="text-xs font-bold text-ink-900">Emergency & Ambulance Service</div>
+                    <div className="text-[11px] text-ink-600">Immediate response across Dhaka</div>
+                  </div>
+                </div>
+                <a
+                  href={`tel:${CONTACT.phone1Raw}`}
+                  className="text-xs font-bold text-white bg-brand-green-600 hover:bg-brand-green-700 px-3 py-2 rounded-lg transition-colors flex-shrink-0"
+                >
+                  Call 24/7
+                </a>
+              </div>
             </div>
           </div>
 

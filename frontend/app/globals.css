@@ -28,7 +28,8 @@
   --color-ink-400: #94A3B8;
 
   /* Typography */
-  --font-poppins: "Poppins", sans-serif;
+  --font-poppins: var(--font-poppins), "Poppins", sans-serif;
+  --font-hind-siliguri: var(--font-hind-siliguri), "Hind Siliguri", sans-serif;
   --font-sans: var(--font-poppins);
 
   /* Radius */
@@ -79,6 +80,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #ffffff;
+}
+
+.font-bangla, [lang="bn"], [lang="bn"] * {
+  font-family: var(--font-hind-siliguri), "Hind Siliguri", "Kalpurush", sans-serif;
 }
 
 :focus-visible {

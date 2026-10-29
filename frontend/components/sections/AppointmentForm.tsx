@@ -13,7 +13,7 @@ import {
 } from "react-icons/ri";
 import SectionTag from "@/components/ui/SectionTag";
 import Button from "@/components/ui/Button";
-import { t } from "@/lib/content";
+import { useLanguage } from "@/lib/LanguageContext";
 
 const schema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -38,6 +38,7 @@ const inputClasses = [
 const labelClasses = "block text-sm font-semibold text-ink-900 mb-1.5";
 
 export default function AppointmentForm() {
+  const { t } = useLanguage();
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
 

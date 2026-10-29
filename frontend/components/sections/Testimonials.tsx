@@ -1,11 +1,14 @@
+"use client";
 // components/sections/Testimonials.tsx
 import { RiStarFill } from "react-icons/ri";
 import SectionTag from "@/components/ui/SectionTag";
 import Card from "@/components/ui/Card";
-import { t } from "@/lib/content";
+import { useLanguage } from "@/lib/LanguageContext";
 import { TESTIMONIALS } from "@/lib/constants";
 
 export default function Testimonials() {
+  const { t } = useLanguage();
+
   return (
     <section
       id="testimonials"
@@ -52,26 +55,23 @@ export default function Testimonials() {
               </div>
 
               {/* Quote */}
-              <p className="text-ink-600 text-sm leading-relaxed">
+              <blockquote className="text-ink-800 text-sm leading-relaxed italic">
                 &ldquo;{review.text}&rdquo;
-              </p>
+              </blockquote>
 
-              {/* Patient info */}
-              <div className="flex items-center gap-3 mt-auto pt-4 border-t border-gray-100">
-                <div
-                  className="w-9 h-9 rounded-full bg-brand-green-100 text-brand-green-700 flex items-center justify-center font-bold text-sm"
-                  aria-hidden="true"
-                >
-                  {review.name.charAt(0)}
+              {/* Author */}
+              <div className="mt-auto pt-4 border-t border-gray-200">
+                <div className="font-bold text-ink-900 text-sm">
+                  {review.name}
                 </div>
-                <div>
-                  <h3 className="text-ink-900 text-sm font-bold">{review.name}</h3>
-                  <p className="text-xs text-ink-600">{review.location}</p>
+                <div className="text-xs text-brand-green-700 font-medium">
+                  {review.location}
                 </div>
               </div>
             </Card>
           ))}
         </div>
+
       </div>
     </section>
   );

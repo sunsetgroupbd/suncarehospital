@@ -1,3 +1,4 @@
+"use client";
 // components/sections/Departments.tsx
 import {
   RiStethoscopeFill,
@@ -11,7 +12,7 @@ import {
 } from "react-icons/ri";
 import SectionTag from "@/components/ui/SectionTag";
 import Card from "@/components/ui/Card";
-import { t } from "@/lib/content";
+import { useLanguage } from "@/lib/LanguageContext";
 import { DEPARTMENTS } from "@/lib/constants";
 
 const iconMap: Record<string, React.ElementType> = {
@@ -26,6 +27,8 @@ const iconMap: Record<string, React.ElementType> = {
 };
 
 export default function Departments() {
+  const { t, lang } = useLanguage();
+
   return (
     <section
       id="departments"
@@ -48,32 +51,31 @@ export default function Departments() {
           </p>
         </div>
 
-        {/* Departments Grid with rounded-xl */}
-        <div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6"
-          role="list"
-          aria-label="Clinical departments"
-        >
+        {/* 8 Departments Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {DEPARTMENTS.map((dept) => {
-            const Icon = iconMap[dept.icon] ?? RiStethoscopeFill;
+            const Icon = iconMap[dept.icon] || RiStethoscopeFill;
+            const name = lang === "bn" && "nameBn" in dept ? dept.nameBn : dept.name;
+            const desc = lang === "bn" && "descriptionBn" in dept ? dept.descriptionBn : dept.description;
+
             return (
               <Card
                 key={dept.id}
-                className="flex flex-col gap-4 bg-white"
                 hover
+                className="flex flex-col gap-4 p-6 bg-white border border-gray-100 shadow-subtle"
               >
                 <div
-                  className="w-11 h-11 rounded-lg bg-brand-green-100 flex items-center justify-center flex-shrink-0 text-brand-green-700"
+                  className="w-12 h-12 rounded-xl bg-brand-green-50 border border-brand-green-100 flex items-center justify-center text-brand-green-700 flex-shrink-0"
                   aria-hidden="true"
                 >
-                  <Icon size={22} />
+                  <Icon size={24} />
                 </div>
                 <div>
-                  <h3 className="text-ink-900 font-bold text-base mb-1.5">
-                    {dept.name}
+                  <h3 className="font-bold text-ink-900 text-lg mb-2 leading-snug">
+                    {name}
                   </h3>
                   <p className="text-ink-600 text-sm leading-relaxed">
-                    {dept.description}
+                    {desc}
                   </p>
                 </div>
               </Card>
