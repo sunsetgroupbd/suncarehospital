@@ -140,11 +140,10 @@ export default function Footer() {
               href={CONTACT.facebook}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2.5 px-4 py-2.5 rounded-lg bg-white/10 hover:bg-white/15 text-white text-sm font-semibold border border-white/15 transition-colors"
+              className="w-11 h-11 rounded-xl bg-white/10 hover:bg-[#1877F2] text-emerald-400 hover:text-white flex items-center justify-center border border-white/15 hover:border-transparent transition-all duration-200 cursor-pointer shadow-subtle group"
               aria-label="Follow Sun Care Hospital on Facebook (opens in new tab)"
             >
-              <RiFacebookCircleFill size={18} className="text-emerald-400" />
-              <span>facebook.com/suncarehospital</span>
+              <RiFacebookCircleFill size={26} className="transition-transform group-hover:scale-110" />
             </a>
           </div>
 
