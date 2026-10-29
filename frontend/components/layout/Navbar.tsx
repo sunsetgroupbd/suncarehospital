@@ -1,13 +1,13 @@
 "use client";
 // components/layout/Navbar.tsx
-// Sticky navbar: transparent on top, solid white with very subtle bottom border on scroll.
-// Bilingual support with active language toggle for desktop & mobile.
+// Clean, uncluttered executive navbar for Sun Care Hospital & Diagnostic Center Ltd.
+// Smooth sticky behavior without overlapping TopBar; balanced layout across all desktop widths.
 
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { RiPhoneFill, RiMenuLine, RiCloseLine } from "react-icons/ri";
-import { NAV_LINKS, CONTACT, SITE } from "@/lib/constants";
+import { RiMenuLine, RiCloseLine } from "react-icons/ri";
+import { NAV_LINKS, SITE } from "@/lib/constants";
 import Button from "@/components/ui/Button";
 import { useLanguage } from "@/lib/LanguageContext";
 
@@ -17,7 +17,7 @@ export default function Navbar() {
   const { lang, setLang, t } = useLanguage();
 
   const handleScroll = useCallback(() => {
-    setScrolled(window.scrollY > 20);
+    setScrolled(window.scrollY > 30);
   }, []);
 
   useEffect(() => {
@@ -44,34 +44,34 @@ export default function Navbar() {
     <>
       <nav
         className={[
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-200",
+          "sticky top-0 z-40 w-full transition-all duration-200",
           scrolled
             ? "bg-white/98 backdrop-blur-md border-b border-gray-100 shadow-subtle"
-            : "bg-white/90 backdrop-blur-sm border-b border-gray-100/60",
+            : "bg-white border-b border-gray-100",
         ].join(" ")}
         role="navigation"
         aria-label="Main navigation"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20">
-            {/* Logo: /onlylogo.png (heart-hands logo mark without text) */}
+          <div className="flex items-center justify-between h-[72px]">
+            {/* Left: Brand Identity */}
             <Link
               href="/"
-              className="flex items-center gap-3 flex-shrink-0"
+              className="flex items-center gap-3 flex-shrink-0 group"
               aria-label={`${SITE.name} — Home`}
             >
-              <div className="relative w-10 h-10 sm:w-11 sm:h-11 flex-shrink-0">
+              <div className="relative w-9 h-9 sm:w-10 sm:h-10 flex-shrink-0">
                 <Image
                   src="/onlylogo.png"
-                  alt={`${SITE.shortName} mark`}
+                  alt={`${SITE.shortName} emblem`}
                   fill
-                  sizes="44px"
+                  sizes="40px"
                   className="object-contain"
                   priority
                 />
               </div>
               <div className="flex flex-col">
-                <span className="text-brand-green-700 font-bold text-base sm:text-lg leading-tight tracking-tight">
+                <span className="text-brand-green-700 group-hover:text-brand-green-600 font-bold text-base sm:text-lg leading-tight tracking-tight transition-colors">
                   Sun Care Hospital
                 </span>
                 <span className="text-ink-600 text-[11px] sm:text-xs font-medium leading-tight">
@@ -80,15 +80,30 @@ export default function Navbar() {
               </div>
             </Link>
 
-            {/* Desktop nav links */}
-            <div className="hidden lg:flex items-center gap-6 xl:gap-7">
+            {/* Center: Desktop Navigation Links (Properly spaced without clutter) */}
+            <div className="hidden lg:flex items-center gap-4 xl:gap-6">
               {NAV_LINKS.map((link) => {
                 const label = lang === "bn" && "labelBn" in link ? link.labelBn : link.label;
+                const isOwnership = link.href === "#ownership";
+
+                if (isOwnership) {
+                  return (
+                    <a
+                      key={link.href}
+                      href={link.href}
+                      className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-green-50 text-brand-green-700 border border-brand-green-200/80 text-xs xl:text-sm font-bold hover:bg-brand-green-100 transition-colors"
+                    >
+                      <span className="w-1.5 h-1.5 rounded-full bg-brand-green-600" />
+                      <span>{label}</span>
+                    </a>
+                  );
+                }
+
                 return (
                   <a
                     key={link.href}
                     href={link.href}
-                    className="text-sm font-semibold text-ink-700 hover:text-brand-green-600 transition-colors py-1"
+                    className="text-[13px] xl:text-sm font-semibold text-ink-700 hover:text-brand-green-600 transition-colors py-1 whitespace-nowrap"
                   >
                     {label}
                   </a>
@@ -96,53 +111,15 @@ export default function Navbar() {
               })}
             </div>
 
-            {/* Desktop CTA & Language Toggle */}
-            <div className="hidden lg:flex items-center gap-3.5">
-              {/* Language Switcher */}
-              <div className="inline-flex items-center bg-gray-100 rounded-lg p-0.5 border border-gray-200">
-                <button
-                  type="button"
-                  onClick={() => setLang("en")}
-                  className={`px-2 py-1 rounded text-xs font-semibold transition-colors cursor-pointer ${
-                    lang === "en"
-                      ? "bg-white text-brand-green-700 shadow-sm"
-                      : "text-ink-600 hover:text-ink-900"
-                  }`}
-                >
-                  EN
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setLang("bn")}
-                  className={`px-2 py-1 rounded text-xs font-semibold transition-colors cursor-pointer ${
-                    lang === "bn"
-                      ? "bg-white text-brand-green-700 shadow-sm"
-                      : "text-ink-600 hover:text-ink-900"
-                  }`}
-                >
-                  বাং
-                </button>
-              </div>
-
-              <a
-                href={`tel:${CONTACT.phone1Raw}`}
-                className="flex items-center gap-2 text-sm font-semibold text-ink-700 hover:text-brand-green-600 transition-colors"
-                aria-label={`Call ${CONTACT.phone1}`}
-              >
-                <div className="w-8 h-8 rounded-lg bg-brand-green-100 flex items-center justify-center text-brand-green-700">
-                  <RiPhoneFill size={15} aria-hidden="true" />
-                </div>
-                <span className="hidden xl:inline">{CONTACT.phone1}</span>
-              </a>
-
+            {/* Right: Primary Call to Action */}
+            <div className="hidden lg:flex items-center gap-3">
               <Button href="#appointment" size="sm">
                 {t.nav.bookAppointment}
               </Button>
             </div>
 
-            {/* Mobile menu toggle */}
+            {/* Mobile Controls (Menu toggle & Quick language pill) */}
             <div className="flex items-center gap-2 lg:hidden">
-              {/* Mobile Language Switcher */}
               <button
                 type="button"
                 onClick={() => setLang(lang === "en" ? "bn" : "en")}
@@ -264,16 +241,7 @@ export default function Navbar() {
           </div>
         </nav>
 
-        <div className="p-5 border-t border-gray-100 space-y-3">
-          <a
-            href={`tel:${CONTACT.phone1Raw}`}
-            className="flex items-center gap-2.5 text-ink-900 hover:text-brand-green-600 font-semibold text-sm"
-          >
-            <div className="w-8 h-8 rounded-lg bg-brand-green-100 flex items-center justify-center text-brand-green-700">
-              <RiPhoneFill size={15} aria-hidden="true" />
-            </div>
-            {CONTACT.phone1}
-          </a>
+        <div className="p-5 border-t border-gray-100">
           <Button href="#appointment" className="w-full" size="sm">
             {t.nav.bookAppointment}
           </Button>

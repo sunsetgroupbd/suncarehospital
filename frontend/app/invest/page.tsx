@@ -38,7 +38,7 @@ export default function InvestPage() {
     <>
       <TopBar />
       <Navbar />
-      <main className="pt-16 md:pt-20">
+      <main className="py-8 md:py-12">
         <Ownership />
         <WhyChooseUs />
         <ContactLocation />

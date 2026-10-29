@@ -28,7 +28,7 @@ export default function AboutPage() {
     <>
       <TopBar />
       <Navbar />
-      <main className="pt-16 md:pt-20">
+      <main className="py-8 md:py-12">
         <About />
         <WhyChooseUs />
       </main>

@@ -20,7 +20,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative bg-surface-50 pt-28 pb-16 lg:pt-36 lg:pb-24"
+      className="relative bg-surface-50 py-12 lg:py-20"
       aria-labelledby="hero-heading"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
