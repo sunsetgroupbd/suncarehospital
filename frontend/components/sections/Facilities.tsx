@@ -1,11 +1,16 @@
 "use client";
 // components/sections/Facilities.tsx
+// High-impact visual showcase of Sun Care Hospital's diagnostic and clinical facilities.
+// Alternating feature layout with curated high-resolution medical photography.
+
+import Image from "next/image";
 import {
   RiTestTubeFill,
   RiScan2Fill,
   RiCapsuleFill,
   RiHeartPulseFill,
   RiHotelBedFill,
+  RiArrowRightLine,
 } from "react-icons/ri";
 import { FaAmbulance } from "react-icons/fa";
 import SectionTag from "@/components/ui/SectionTag";
@@ -46,8 +51,8 @@ export default function Facilities() {
           </p>
         </div>
 
-        {/* Alternating feature layout with rounded-xl */}
-        <div className="space-y-12 md:space-y-16">
+        {/* Alternating feature layout with real medical photography */}
+        <div className="space-y-14 md:space-y-20">
           {FACILITIES.map((facility, index) => {
             const Icon = iconMap[facility.icon] ?? RiHeartPulseFill;
             const isEven = index % 2 === 0;
@@ -61,11 +66,31 @@ export default function Facilities() {
                   isEven ? "" : "lg:flex-row-reverse"
                 }`}
               >
-                {/* Visual block */}
+                {/* Visual block with photography */}
                 <div className="w-full lg:w-1/2">
-                  <div className="relative aspect-[16/9] rounded-xl bg-surface-50 border border-gray-100 flex items-center justify-center overflow-hidden shadow-subtle group">
-                    <div className="w-20 h-20 rounded-xl bg-white border border-gray-100 shadow-subtle flex items-center justify-center text-brand-green-700 transition-transform duration-200 group-hover:scale-105">
-                      <Icon size={40} aria-hidden="true" />
+                  <div className="relative aspect-[16/10] sm:aspect-[16/9] rounded-xl bg-surface-100 border border-gray-100 overflow-hidden shadow-elevated group">
+                    <Image
+                      src={facility.image}
+                      alt={title}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 600px"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+
+                    {/* Gradient overlay for contrast */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+
+                    {/* Floating badge over image */}
+                    <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between gap-3">
+                      <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/95 backdrop-blur-sm border border-gray-100 shadow-subtle text-xs font-bold text-ink-900 truncate">
+                        <div className="w-5 h-5 rounded-md bg-brand-green-100 text-brand-green-700 flex items-center justify-center flex-shrink-0">
+                          <Icon size={13} aria-hidden="true" />
+                        </div>
+                        <span className="truncate">{title}</span>
+                      </div>
+                      <span className="hidden sm:inline-block px-2.5 py-1 rounded-md bg-brand-green-600/90 backdrop-blur-sm text-white text-[11px] font-semibold flex-shrink-0">
+                        {lang === "bn" ? "আধুনিক মান" : "Standard Care"}
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -84,10 +109,10 @@ export default function Facilities() {
                   <div className="pt-2">
                     <a
                       href="#contact"
-                      className="inline-flex items-center gap-2 text-sm font-semibold text-brand-green-700 hover:text-brand-green-800 transition-colors"
+                      className="inline-flex items-center gap-2 text-sm font-semibold text-brand-green-700 hover:text-brand-green-800 transition-colors group"
                     >
                       <span>{lang === "bn" ? "বিস্তারিত জানতে যোগাযোগ করুন" : "Inquire about facility"}</span>
-                      <span aria-hidden="true">&rarr;</span>
+                      <RiArrowRightLine className="w-4 h-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
                     </a>
                   </div>
                 </div>

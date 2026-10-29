@@ -146,6 +146,7 @@ export const FACILITIES = [
     descriptionBn:
       "বায়োকেমিস্ট্রি, হেমাটোলজি ও মাইক্রোবায়োলজির শতভাগ অটোমেটেড সঠিক রোগ নির্ণয় ল্যাব।",
     icon: "FlaskConical",
+    image: "/images/facilities/lab.jpg",
   },
   {
     id: "imaging",
@@ -156,6 +157,7 @@ export const FACILITIES = [
     descriptionBn:
       "উচ্চ রেজ্যুলেশন ডিজিটাল এক্স-রে, ৪ডি কালার ডপলার আল্ট্রাসনোগ্রাম ও ইকোকার্ডিওগ্রাফি।",
     icon: "ScanLine",
+    image: "/images/facilities/radiology.jpg",
   },
   {
     id: "pharmacy",
@@ -166,6 +168,7 @@ export const FACILITIES = [
     descriptionBn:
       "সার্বক্ষণিক খোলা মানসম্মত ওষুধ ও অভিজ্ঞ ফার্মাসিস্ট দ্বারা পরিচালিত ইন-হাউস ফার্মেসী।",
     icon: "Pill",
+    image: "/images/facilities/pharmacy.jpg",
   },
   {
     id: "ambulance",
@@ -176,6 +179,7 @@ export const FACILITIES = [
     descriptionBn:
       "অক্সিজেন ও প্যারামেডিক সুবিধা সংবলিত দ্রুতগামী অ্যাম্বুলেন্স সেবা।",
     icon: "Ambulance",
+    image: "/images/facilities/ambulance.jpg",
   },
   {
     id: "icu",
@@ -186,6 +190,7 @@ export const FACILITIES = [
     descriptionBn:
       "অত্যাধুনিক ভেন্টিলেটর ও সার্বক্ষণিক বিশেষজ্ঞ চিকিৎসক নিয়ন্ত্রিত আইসিইউ শয্যা।",
     icon: "Activity",
+    image: "/images/facilities/icu.jpg",
   },
   {
     id: "rooms",
@@ -196,6 +201,7 @@ export const FACILITIES = [
     descriptionBn:
       "সেন্ট্রাল অক্সিজেন সমৃদ্ধ শান্ত ও পরিচ্ছন্ন সিঙ্গেল কেবিন, ডিলাক্স ও জেনারেল ওয়ার্ড।",
     icon: "BedDouble",
+    image: "/images/facilities/cabin.jpg",
   },
 ] as const;
 
