@@ -49,9 +49,14 @@ export default function About() {
                 </div>
 
                 <div className="text-center">
-                  <p className="text-xs text-brand-green-800 font-semibold">
+                  <a
+                    href={SITE.parentCompanyUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs text-brand-green-800 hover:text-brand-green-600 font-semibold underline underline-offset-2 transition-colors"
+                  >
                     {SITE.parentCompany}
-                  </p>
+                  </a>
                 </div>
               </div>
             </div>
@@ -78,16 +83,21 @@ export default function About() {
               {t.about.body2}
             </p>
 
-            <div className="inline-flex items-center gap-2.5 px-3.5 py-2.5 bg-brand-green-50 rounded-lg border border-brand-green-200/60 w-fit">
+            <a
+              href={SITE.parentCompanyUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2.5 px-3.5 py-2.5 bg-brand-green-50 hover:bg-brand-green-100 rounded-lg border border-brand-green-200/60 w-fit transition-colors group cursor-pointer"
+            >
               <RiHospitalFill
                 size={18}
                 className="text-brand-green-700 flex-shrink-0"
                 aria-hidden="true"
               />
-              <span className="text-brand-green-800 text-sm font-semibold">
+              <span className="text-brand-green-800 group-hover:text-brand-green-900 text-sm font-semibold underline underline-offset-2">
                 {t.about.parentNote}
               </span>
-            </div>
+            </a>
           </div>
         </div>
 

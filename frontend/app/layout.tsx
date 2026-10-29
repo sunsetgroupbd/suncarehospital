@@ -79,7 +79,7 @@ export const metadata: Metadata = {
   ],
   authors: [
     { name: SITE.name, url: SITE.url },
-    { name: "Sunset Kuakata Hotel & Resort Ltd." },
+    { name: "Sunset Kuakata Hotel & Resort Ltd.", url: "https://sunsetkuakatahotel.com/" },
   ],
   creator: SITE.name,
   publisher: SITE.name,
@@ -220,6 +220,7 @@ const jsonLd = {
       parentOrganization: {
         "@type": "Organization",
         name: "Sunset Kuakata Hotel & Resort Ltd.",
+        url: "https://sunsetkuakatahotel.com/",
       },
       sameAs: [CONTACT.facebook],
     },

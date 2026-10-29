@@ -12,6 +12,7 @@ export const SITE = {
   url: "https://suncarehospital.com",
   status: "Multi-Specialty Hospital & Diagnostic Center",
   parentCompany: "A Project by Sunset Kuakata Hotel & Resort Ltd.",
+  parentCompanyUrl: "https://sunsetkuakatahotel.com/",
   copyrightYear: 2026,
 } as const;
 

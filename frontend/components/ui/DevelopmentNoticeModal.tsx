@@ -160,7 +160,14 @@ export default function DevelopmentNoticeModal() {
               {isBn ? "সান কেয়ার হাসপাতাল এন্ড ডায়াগনস্টিক সেন্টার লিঃ" : "Sun Care Hospital & Diagnostic Center Ltd."}
             </h2>
             <p className="text-xs font-medium text-brand-green-700 mt-0.5">
-              {isBn ? "সানসেট কুয়াকাটা হোটেল এন্ড রিসোর্ট লিঃ-এর একটি সহযোগী প্রতিষ্ঠান" : "A Project by Sunset Kuakata Hotel & Resort Ltd."}
+              <a
+                href={SITE.parentCompanyUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-brand-green-800 underline underline-offset-2 transition-colors"
+              >
+                {isBn ? "সানসেট কুয়াকাটা হোটেল এন্ড রিসোর্ট লিঃ-এর একটি সহযোগী প্রতিষ্ঠান" : "A Project by Sunset Kuakata Hotel & Resort Ltd."}
+              </a>
             </p>
           </div>
 
