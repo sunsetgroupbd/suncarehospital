@@ -330,10 +330,10 @@ export default function Ownership() {
             </div>
 
             <div className="overflow-y-auto p-4 flex items-center justify-center bg-gray-50">
-              <div className="relative w-full max-w-3xl aspect-[806/349]">
+              <div className="relative w-full max-w-4xl aspect-[1909/824]">
                 <Image
-                  src="/images/ownership-packages.png"
-                  alt="Sun Care Hospital Official Packages Leaflet"
+                  src="/images/Sun Care Hospital Membership Packages.webp"
+                  alt="Sun Care Hospital Official Membership Packages Leaflet"
                   fill
                   className="object-contain rounded-lg"
                   priority

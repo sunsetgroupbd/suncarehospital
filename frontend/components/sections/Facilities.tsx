@@ -20,7 +20,7 @@ import { FACILITIES } from "@/lib/constants";
 import labImg from "@/public/images/facilities/lab.jpg";
 import radiologyImg from "@/public/images/facilities/radiology.jpg";
 import pharmacyImg from "@/public/images/facilities/pharmacy.jpg";
-import ambulanceImg from "@/public/images/facilities/ambulance.jpg";
+import ambulanceImg from "@/public/images/SUN CARE Ambulance at Hospital Entrance.webp";
 import icuImg from "@/public/images/facilities/icu.jpg";
 import cabinImg from "@/public/images/facilities/cabin.jpg";
 

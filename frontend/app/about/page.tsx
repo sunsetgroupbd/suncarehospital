@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     description:
       "Patient-first healthcare, advanced diagnostics, and dedicated medical specialists in Mohammadpur, Dhaka.",
     url: `${SITE.url}/about`,
-    images: [{ url: "/images/hospitalbuildingimage.webp", width: 1200, height: 630 }],
+    images: [{ url: "/images/Sun Care Hospital Exterior.webp", width: 993, height: 1584 }],
   },
 };
 

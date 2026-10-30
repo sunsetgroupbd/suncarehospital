@@ -102,9 +102,9 @@ export const metadata: Metadata = {
       "Premier multi-specialty hospital and computerized diagnostic center in Bosila Garden City, Mohammadpur, Dhaka. 24/7 emergency trauma care, modern pathology lab, digital imaging, and consultant physicians.",
     images: [
       {
-        url: "/images/hospitalbuildingimage.webp",
-        width: 1200,
-        height: 630,
+        url: "/images/Sun Care Hospital Exterior.webp",
+        width: 993,
+        height: 1584,
         alt: `${SITE.name} Building in Mohammadpur, Dhaka`,
       },
       {
@@ -121,7 +121,7 @@ export const metadata: Metadata = {
     title: `${SITE.name} | Hospital & Diagnostic Center`,
     description:
       "24/7 emergency trauma care, automated diagnostics, ICU, and senior consultant physicians in Mohammadpur, Dhaka.",
-    images: ["/images/hospitalbuildingimage.webp"],
+    images: ["/images/Sun Care Hospital Exterior.webp"],
     creator: "@suncarehospital",
   },
   robots: {
@@ -162,7 +162,7 @@ const jsonLd = {
       alternateName: [SITE.shortName, "Sun Care Hospital Dhaka", "Sun Care Diagnostic"],
       url: SITE.url,
       logo: `${SITE.url}/onlylogo.png`,
-      image: `${SITE.url}/images/hospitalbuildingimage.webp`,
+      image: `${SITE.url}/images/Sun%20Care%20Hospital%20Exterior.webp`,
       description:
         "Premier multi-specialty hospital and comprehensive diagnostic center in Bosila Garden City, Mohammadpur, Dhaka. Features 24/7 emergency service, automated pathology, digital radiology, ICU, and specialist outpatient consultations.",
       telephone: [CONTACT.phone1Raw, CONTACT.phone2Raw],

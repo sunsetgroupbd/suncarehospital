@@ -179,7 +179,7 @@ export const FACILITIES = [
     descriptionBn:
       "অক্সিজেন ও প্যারামেডিক সুবিধা সংবলিত দ্রুতগামী অ্যাম্বুলেন্স সেবা।",
     icon: "Ambulance",
-    image: "/images/facilities/ambulance.jpg",
+    image: "/images/SUN CARE Ambulance at Hospital Entrance.webp",
   },
   {
     id: "icu",

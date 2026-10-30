@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     description:
       "Prestigious healthcare ownership with Saf-Kabala registration, annual dividend profit sharing, and at-cost treatment for 20 family members.",
     url: `${SITE.url}/invest`,
-    images: [{ url: "/images/ownership-packages.png", width: 806, height: 349 }],
+    images: [{ url: "/images/Sun Care Hospital Membership Packages.webp", width: 1909, height: 824 }],
   },
 };
 

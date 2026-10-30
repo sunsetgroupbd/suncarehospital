@@ -96,7 +96,7 @@ export default function Hero() {
               {/* Architectural Building Image Container */}
               <div className="relative aspect-[4/3] rounded-xl overflow-hidden border border-gray-100 shadow-elevated bg-white">
                 <Image
-                  src="/images/hospitalbuildingimage.webp"
+                  src="/images/Sun Care Hospital Exterior.webp"
                   alt={`${SITE.name} building exterior in Mohammadpur`}
                   fill
                   sizes="(max-width: 1024px) 100vw, 520px"
