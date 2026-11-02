@@ -194,6 +194,39 @@ export default function DevelopmentNoticeModal() {
             )}
           </div>
 
+          {/* Halal Income Promo Banner inside Dev Notice */}
+          <div className="bg-gradient-to-r from-emerald-950 via-[#0B2518] to-slate-900 border border-emerald-500/30 rounded-xl p-3 flex items-center justify-between gap-3 shadow-sm">
+            <div className="flex items-center gap-2.5 min-w-0">
+              <div className="relative w-11 h-11 rounded-lg overflow-hidden flex-shrink-0 border border-amber-400/40">
+                <Image
+                  src="/images/shareposterpoup.webp"
+                  alt="১ বিনিয়োগে ৪ হালাল আয়ের উৎস"
+                  fill
+                  sizes="44px"
+                  className="object-cover"
+                />
+              </div>
+              <div className="min-w-0">
+                <div className="text-[10px] font-bold text-amber-300 uppercase tracking-wider">
+                  {isBn ? "মেগা অফার" : "Special Offer"}
+                </div>
+                <div className="text-xs sm:text-sm font-bold text-white truncate">
+                  {isBn ? "১ বিনিয়োগে ৪ হালাল আয়ের উৎস" : "1 Investment, 4 Halal Income Streams"}
+                </div>
+              </div>
+            </div>
+            <button
+              type="button"
+              onClick={() => {
+                handleClose();
+                window.dispatchEvent(new CustomEvent("open-halal-promo"));
+              }}
+              className="px-2.5 py-1.5 rounded-lg bg-amber-400 hover:bg-amber-300 text-slate-950 text-xs font-bold whitespace-nowrap transition-colors flex-shrink-0 cursor-pointer shadow"
+            >
+              {isBn ? "বিজ্ঞাপন দেখুন" : "View Offer"}
+            </button>
+          </div>
+
           {/* Contact Details Card */}
           <div className="bg-surface-50 border border-gray-100 rounded-lg p-3 sm:p-3.5 space-y-2 text-xs text-ink-700">
             <div className="flex items-start gap-2">

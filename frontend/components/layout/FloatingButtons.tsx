@@ -26,11 +26,25 @@ export default function FloatingButtons() {
   };
 
   return (
-    <div
-      className="fixed bottom-5 right-4 z-50 flex flex-col gap-2.5 items-end"
-      role="complementary"
-      aria-label="Floating action buttons"
-    >
+    <>
+      {/* Floating Halal Promo Offer Button (Bottom Left) */}
+      <div className="fixed bottom-5 left-4 z-40 flex items-center">
+        <button
+          type="button"
+          onClick={() => window.dispatchEvent(new CustomEvent("open-halal-promo"))}
+          className="flex items-center gap-2 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-full bg-gradient-to-r from-emerald-900 to-slate-900 text-amber-300 border border-amber-400/50 font-bold text-[11px] sm:text-xs shadow-xl hover:scale-105 active:scale-95 transition-all cursor-pointer animate-pulse"
+          aria-label={lang === "bn" ? "১ বিনিয়োগে ৪ হালাল আয়ের সুযোগ" : "1 Investment 4 Halal Returns"}
+        >
+          <span className="w-2 h-2 rounded-full bg-amber-400 animate-ping flex-shrink-0" />
+          <span>{lang === "bn" ? "📢 ৪ হালাল আয়ের সুযোগ" : "📢 4 Halal Income Offer"}</span>
+        </button>
+      </div>
+
+      <div
+        className="fixed bottom-5 right-4 z-50 flex flex-col gap-2.5 items-end"
+        role="complementary"
+        aria-label="Floating action buttons"
+      >
       {/* Back to top */}
       <button
         onClick={scrollToTop}
@@ -68,5 +82,6 @@ export default function FloatingButtons() {
         <span>{lang === "bn" ? "জরুরি কল" : "Emergency Call"}</span>
       </a>
     </div>
+    </>
   );
 }

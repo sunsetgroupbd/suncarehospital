@@ -3,6 +3,7 @@ import { Poppins, Hind_Siliguri, Noto_Sans_Bengali } from "next/font/google";
 import "./globals.css";
 import { SITE, CONTACT, ADDRESS } from "@/lib/constants";
 import DevelopmentNoticeModal from "@/components/ui/DevelopmentNoticeModal";
+import HalalIncomePromoModal from "@/components/ui/HalalIncomePromoModal";
 import { LanguageProvider } from "@/lib/LanguageContext";
 
 const poppins = Poppins({
@@ -265,6 +266,7 @@ export default function RootLayout({ children }: LayoutProps) {
         <LanguageProvider>
           {children}
           <DevelopmentNoticeModal />
+          <HalalIncomePromoModal />
         </LanguageProvider>
       </body>
     </html>
