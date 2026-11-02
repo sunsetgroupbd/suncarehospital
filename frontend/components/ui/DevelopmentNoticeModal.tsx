@@ -89,9 +89,6 @@ export default function DevelopmentNoticeModal() {
 
       {/* Modal Dialog Card */}
       <div className="relative w-full max-w-lg my-auto bg-white rounded-xl shadow-subtle border border-gray-100 overflow-hidden flex flex-col max-h-[calc(100dvh-2rem)] sm:max-h-[calc(100dvh-3rem)] transform transition-all duration-200">
-        {/* Top Solid Brand Stripe */}
-        <div className="h-1.5 w-full bg-brand-green-600 flex-shrink-0" />
-
         {/* Pinned Modal Header Bar */}
         <div className="flex items-center justify-between px-4 py-3 sm:px-6 sm:py-3.5 border-b border-gray-100 bg-white flex-shrink-0">
           <div className="flex items-center gap-2.5 min-w-0">
