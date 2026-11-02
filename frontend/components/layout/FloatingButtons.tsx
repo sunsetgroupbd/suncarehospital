@@ -32,11 +32,10 @@ export default function FloatingButtons() {
         <button
           type="button"
           onClick={() => window.dispatchEvent(new CustomEvent("open-halal-promo"))}
-          className="flex items-center gap-2 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-full bg-gradient-to-r from-emerald-900 to-slate-900 text-amber-300 border border-amber-400/50 font-bold text-[11px] sm:text-xs shadow-xl hover:scale-105 active:scale-95 transition-all cursor-pointer animate-pulse"
+          className="flex items-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-full bg-[#0B2518] text-white border border-brand-green-700/60 hover:bg-black font-semibold text-[11px] sm:text-xs shadow-md transition-colors cursor-pointer"
           aria-label={lang === "bn" ? "১ বিনিয়োগে ৪ হালাল আয়ের সুযোগ" : "1 Investment 4 Halal Returns"}
         >
-          <span className="w-2 h-2 rounded-full bg-amber-400 animate-ping flex-shrink-0" />
-          <span>{lang === "bn" ? "📢 ৪ হালাল আয়ের সুযোগ" : "📢 4 Halal Income Offer"}</span>
+          <span>{lang === "bn" ? "৪ হালাল আয়ের সুযোগ" : "4 Halal Income Offer"}</span>
         </button>
       </div>
 

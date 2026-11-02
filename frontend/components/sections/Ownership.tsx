@@ -14,12 +14,7 @@ import {
   RiEyeLine,
   RiCloseLine,
   RiMapPin2Fill,
-  RiHotelLine,
-  RiHospitalLine,
-  RiSunFill,
-  RiPlantFill,
   RiWhatsappFill,
-  RiSparklingFill,
 } from "react-icons/ri";
 import { TbCurrencyTaka } from "react-icons/tb";
 import SectionTag from "@/components/ui/SectionTag";
@@ -212,40 +207,37 @@ export default function Ownership() {
 
         {/* Mega Offer Showcase: 1 Investment, 4 Halal Income Sources */}
         <div id="halal-investment" className="mb-14 scroll-mt-24">
-          <div className="relative rounded-2xl bg-gradient-to-br from-slate-950 via-[#0B2518] to-slate-900 border border-emerald-500/30 p-6 sm:p-8 lg:p-10 shadow-elevated overflow-hidden text-white">
-            {/* Background subtle radial glow */}
-            <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
-
-            <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+          <div className="rounded-2xl bg-white border border-gray-200 p-6 sm:p-8 lg:p-10 shadow-subtle text-ink-900">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
               {/* Left Column: Image Poster Card */}
               <div className="lg:col-span-5 flex flex-col items-center">
                 <div
                   onClick={() => window.dispatchEvent(new CustomEvent("open-halal-promo"))}
-                  className="relative w-full aspect-square max-w-[380px] rounded-xl overflow-hidden border-2 border-amber-400/30 shadow-2xl bg-black cursor-pointer group"
-                  title={lang === "bn" ? "বড় করে দেখতে ক্লিক করুন" : "Click to view full size"}
+                  className="relative w-full aspect-square max-w-[380px] rounded-xl overflow-hidden border border-gray-200 bg-surface-50 cursor-pointer group"
+                  title={lang === "bn" ? "পূর্ণ স্ক্রিনে পোস্টারটি দেখতে ক্লিক করুন" : "Click to view full size"}
                 >
                   <Image
                     src="/images/shareposterpoup.webp"
                     alt="1 বিনিয়োগে 4 হালাল আয়ের উৎস"
                     fill
                     sizes="(max-width: 1024px) 100vw, 400px"
-                    className="object-contain group-hover:scale-105 transition-transform duration-300"
+                    className="object-contain group-hover:scale-[1.02] transition-transform duration-200"
                   />
-                  {/* Hover Overlay with Eye Icon */}
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center gap-2 text-white font-bold text-sm">
-                    <RiEyeLine size={20} />
-                    <span>{lang === "bn" ? "বড় করে বিজ্ঞাপনটি দেখুন" : "View Full Size Ad"}</span>
+                  {/* Subtle Hover Hint */}
+                  <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-150 flex items-center justify-center gap-2 text-white font-semibold text-xs sm:text-sm">
+                    <RiEyeLine size={18} />
+                    <span>{lang === "bn" ? "বড় করে দেখুন" : "View Full Size"}</span>
                   </div>
                 </div>
 
                 <div className="mt-3 flex items-center justify-between w-full max-w-[380px] px-1 text-xs">
-                  <span className="text-emerald-300/90 font-medium">
+                  <span className="text-ink-600 font-medium">
                     {lang === "bn" ? "অফিসিয়াল মেম্বারশিপ অফার পোস্টার" : "Official Membership Offer Poster"}
                   </span>
                   <button
                     type="button"
                     onClick={() => window.dispatchEvent(new CustomEvent("open-halal-promo"))}
-                    className="inline-flex items-center gap-1 text-amber-300 hover:text-amber-200 font-semibold cursor-pointer"
+                    className="inline-flex items-center gap-1 text-brand-green-700 hover:text-brand-green-800 font-semibold cursor-pointer"
                   >
                     <RiEyeLine size={14} />
                     <span>{lang === "bn" ? "বড় করে দেখুন" : "View Fullscreen"}</span>
@@ -253,43 +245,38 @@ export default function Ownership() {
                 </div>
               </div>
 
-              {/* Right Column: Content & 4 Halal Pillars */}
+              {/* Right Column: Clean Minimalist Content & 4 Halal Pillars */}
               <div className="lg:col-span-7 flex flex-col">
                 <div className="mb-6">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-400 text-slate-950 text-xs font-bold uppercase tracking-wider mb-3">
-                    <RiSparklingFill size={13} />
+                  {/* Minimalist Text Badge (No icon) */}
+                  <span className="inline-block px-3 py-1 rounded-full bg-brand-green-50 text-brand-green-800 text-xs font-semibold border border-brand-green-200 mb-3">
                     {lang === "bn" ? "বিশেষ মেগা অফার" : "Special Mega Offer"}
                   </span>
 
-                  <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-snug">
+                  <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-ink-900 tracking-tight leading-snug">
                     {lang === "bn" ? "“১ বিনিয়োগে ৪ হালাল আয়ের উৎস”" : "“1 Investment, 4 Halal Income Streams”"}
                   </h3>
 
-                  <p className="text-xs sm:text-sm text-emerald-200 mt-2 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-ink-600 mt-2 leading-relaxed">
                     {lang === "bn"
                       ? "সানসেট কুয়াকাটা হোটেল ও রিসোর্ট লিঃ-এর সহযোগী প্রতিষ্ঠানে এককালীন মেম্বারশিপে ৪টি বৃহৎ খাতে আজীবন হালাল আয় ও বিশেষ সুবিধাপ্রাপ্তি:"
                       : "A single prestigious investment securing lifelong halal returns and family privileges across 4 thriving ventures:"}
                   </p>
                 </div>
 
-                {/* 4 Projects Grid */}
+                {/* 4 Projects Grid - Minimalist without icon clutter */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mb-6">
                   {/* 1. Dhaka Fantasy Island */}
-                  <div className="p-3.5 rounded-xl bg-white/5 border border-white/10 hover:border-emerald-400/30 transition-all">
-                    <div className="flex items-center gap-2.5 mb-1.5">
-                      <div className="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-300 flex items-center justify-center flex-shrink-0">
-                        <RiHotelLine size={18} />
-                      </div>
-                      <h4 className="font-bold text-white text-xs sm:text-sm leading-tight">
-                        {lang === "bn"
-                          ? "১. ঢাকা ফ্যান্টাসি আইল্যান্ড"
-                          : "1. Dhaka Fantasy Island"}
-                        <span className="block text-[11px] font-normal text-emerald-300">
-                          {lang === "bn" ? "(ইকো হোটেল ও রিসোর্ট)" : "(Eco Hotel & Resort)"}
-                        </span>
-                      </h4>
-                    </div>
-                    <p className="text-xs text-slate-300 leading-relaxed pl-1">
+                  <div className="p-4 rounded-xl bg-surface-50 border border-gray-200/80">
+                    <h4 className="font-bold text-ink-900 text-sm sm:text-base mb-1">
+                      {lang === "bn"
+                        ? "১. ঢাকা ফ্যান্টাসি আইল্যান্ড"
+                        : "1. Dhaka Fantasy Island"}
+                      <span className="block text-xs font-normal text-brand-green-700 mt-0.5">
+                        {lang === "bn" ? "(ইকো হোটেল ও রিসোর্ট)" : "(Eco Hotel & Resort)"}
+                      </span>
+                    </h4>
+                    <p className="text-xs sm:text-sm text-ink-600 leading-relaxed mt-1">
                       {lang === "bn"
                         ? "মোহাম্মদপুরের হোটেল এন্ড রিসোর্ট থাকা ও অতিথির হালাল আয়ের সুবিধা।"
                         : "Mohammadpur hotel & resort stay accommodations and guest halal earnings."}
@@ -297,21 +284,16 @@ export default function Ownership() {
                   </div>
 
                   {/* 2. Sun Care Hospital */}
-                  <div className="p-3.5 rounded-xl bg-white/5 border border-white/10 hover:border-emerald-400/30 transition-all">
-                    <div className="flex items-center gap-2.5 mb-1.5">
-                      <div className="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-300 flex items-center justify-center flex-shrink-0">
-                        <RiHospitalLine size={18} />
-                      </div>
-                      <h4 className="font-bold text-white text-xs sm:text-sm leading-tight">
-                        {lang === "bn"
-                          ? "২. সান কেয়ার হাসপাতাল"
-                          : "2. Sun Care Hospital"}
-                        <span className="block text-[11px] font-normal text-emerald-300">
-                          {lang === "bn" ? "ও ডায়াগনস্টিক সেন্টার লিঃ" : "& Diagnostic Center Ltd."}
-                        </span>
-                      </h4>
-                    </div>
-                    <p className="text-xs text-slate-300 leading-relaxed pl-1">
+                  <div className="p-4 rounded-xl bg-surface-50 border border-gray-200/80">
+                    <h4 className="font-bold text-ink-900 text-sm sm:text-base mb-1">
+                      {lang === "bn"
+                        ? "২. সান কেয়ার হাসপাতাল"
+                        : "2. Sun Care Hospital"}
+                      <span className="block text-xs font-normal text-brand-green-700 mt-0.5">
+                        {lang === "bn" ? "ও ডায়াগনস্টিক সেন্টার লিমিটেড" : "& Diagnostic Center Ltd."}
+                      </span>
+                    </h4>
+                    <p className="text-xs sm:text-sm text-ink-600 leading-relaxed mt-1">
                       {lang === "bn"
                         ? "হাসপাতালের সকল প্রকার সার্ভিস ও ডায়াগনস্টিক খরচে প্রতি খরচের ন্যূনতম ২০% ছাড়ের সুযোগ।"
                         : "Minimum 20% discount on all hospital services and diagnostic tests."}
@@ -319,21 +301,16 @@ export default function Ownership() {
                   </div>
 
                   {/* 3. Sunset Hotel & Resort */}
-                  <div className="p-3.5 rounded-xl bg-white/5 border border-white/10 hover:border-emerald-400/30 transition-all">
-                    <div className="flex items-center gap-2.5 mb-1.5">
-                      <div className="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-300 flex items-center justify-center flex-shrink-0">
-                        <RiSunFill size={18} />
-                      </div>
-                      <h4 className="font-bold text-white text-xs sm:text-sm leading-tight">
-                        {lang === "bn"
-                          ? "৩. সানসেট হোটেল ও রিসোর্ট"
-                          : "3. Sunset Hotel & Resort"}
-                        <span className="block text-[11px] font-normal text-emerald-300">
-                          {lang === "bn" ? "(কুয়াকাটা)" : "(Kuakata)"}
-                        </span>
-                      </h4>
-                    </div>
-                    <p className="text-xs text-slate-300 leading-relaxed pl-1">
+                  <div className="p-4 rounded-xl bg-surface-50 border border-gray-200/80">
+                    <h4 className="font-bold text-ink-900 text-sm sm:text-base mb-1">
+                      {lang === "bn"
+                        ? "৩. সানসেট হোটেল ও রিসোর্ট"
+                        : "3. Sunset Hotel & Resort"}
+                      <span className="block text-xs font-normal text-brand-green-700 mt-0.5">
+                        {lang === "bn" ? "(কুয়াকাটা)" : "(Kuakata)"}
+                      </span>
+                    </h4>
+                    <p className="text-xs sm:text-sm text-ink-600 leading-relaxed mt-1">
                       {lang === "bn"
                         ? "একই সাথে কুয়াকাটার দুটি হোটেল থাকা ও হালাল আয়ের সুবিধা।"
                         : "Dual-hotel accommodations in Kuakata with halal profit dividends."}
@@ -341,21 +318,16 @@ export default function Ownership() {
                   </div>
 
                   {/* 4. Mangrove Eco Resort */}
-                  <div className="p-3.5 rounded-xl bg-white/5 border border-white/10 hover:border-emerald-400/30 transition-all">
-                    <div className="flex items-center gap-2.5 mb-1.5">
-                      <div className="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-300 flex items-center justify-center flex-shrink-0">
-                        <RiPlantFill size={18} />
-                      </div>
-                      <h4 className="font-bold text-white text-xs sm:text-sm leading-tight">
-                        {lang === "bn"
-                          ? "৪. ম্যানগ্রোভ ইকো রিসোর্ট"
-                          : "4. Mangrove Eco Resort"}
-                        <span className="block text-[11px] font-normal text-emerald-300">
-                          {lang === "bn" ? "(ইকো রিসোর্ট)" : "(Eco Resort)"}
-                        </span>
-                      </h4>
-                    </div>
-                    <p className="text-xs text-slate-300 leading-relaxed pl-1">
+                  <div className="p-4 rounded-xl bg-surface-50 border border-gray-200/80">
+                    <h4 className="font-bold text-ink-900 text-sm sm:text-base mb-1">
+                      {lang === "bn"
+                        ? "৪. ম্যানগ্রোভ ইকো রিসোর্ট"
+                        : "4. Mangrove Eco Resort"}
+                      <span className="block text-xs font-normal text-brand-green-700 mt-0.5">
+                        {lang === "bn" ? "(ইকো রিসোর্ট)" : "(Eco Resort)"}
+                      </span>
+                    </h4>
+                    <p className="text-xs sm:text-sm text-ink-600 leading-relaxed mt-1">
                       {lang === "bn"
                         ? "প্রকৃতির মাঝে ইকো রিসোর্ট থাকায় ও হালাল আয়ের সুবিধা।"
                         : "Nature eco-resort stays and continuous halal dividend returns."}
@@ -364,14 +336,14 @@ export default function Ownership() {
                 </div>
 
                 {/* Footer Strip */}
-                <div className="pt-4 border-t border-emerald-500/20 flex flex-col sm:flex-row items-center justify-between gap-4">
-                  <div className="text-xs text-slate-300 text-center sm:text-left">
-                    <span className="text-emerald-400 font-medium">{lang === "bn" ? "ফুটার: " : "Parent Company: "}</span>
+                <div className="pt-4 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+                  <div className="text-xs text-ink-700 text-center sm:text-left">
+                    <span className="font-medium text-ink-500">{lang === "bn" ? "ফুটার: " : "Parent Group: "}</span>
                     <a
                       href={SITE.parentCompanyUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="font-bold text-amber-300 hover:underline"
+                      className="font-bold text-brand-green-800 hover:text-brand-green-900 hover:underline"
                     >
                       {lang === "bn" ? "সানসেট কুয়াকাটা হোটেল ও রিসোর্ট লিমিটেড" : "Sunset Kuakata Hotel & Resort Ltd."}
                     </a>
@@ -380,7 +352,7 @@ export default function Ownership() {
                   <div className="flex items-center gap-2.5 w-full sm:w-auto">
                     <a
                       href={`tel:${CONTACT.phone1Raw}`}
-                      className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition-colors shadow"
+                      className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-lg bg-brand-green-600 hover:bg-brand-green-700 text-white font-semibold text-xs transition-colors"
                     >
                       <RiPhoneFill size={14} />
                       <span>{lang === "bn" ? "বুকিংয়ের জন্য কল করুন" : "Call for Booking"}</span>
@@ -394,9 +366,9 @@ export default function Ownership() {
                       )}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-lg bg-green-500 hover:bg-green-600 text-white font-bold text-xs transition-colors shadow"
+                      className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-lg bg-black hover:bg-ink-900 text-white font-semibold text-xs transition-colors"
                     >
-                      <RiWhatsappFill size={16} />
+                      <RiWhatsappFill size={15} />
                       <span>{lang === "bn" ? "হোয়াটসঅ্যাপ" : "WhatsApp"}</span>
                     </a>
                   </div>

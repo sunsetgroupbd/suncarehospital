@@ -1,7 +1,7 @@
 "use client";
 // components/ui/HalalIncomePromoModal.tsx
-// Interactive promotional ad popup modal for "১ বিনিয়োগে ৪ হালাল আয়ের উৎস"
-// Can be triggered from the floating promo pill, banner links, or clicking the poster image.
+// Minimalist promotional ad popup modal for "১ বিনিয়োগে ৪ হালাল আয়ের উৎস"
+// Solid colors: green, white, black. Zero gradients, clean typography, minimal icon usage.
 
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
@@ -9,11 +9,6 @@ import {
   RiCloseLine,
   RiPhoneFill,
   RiWhatsappFill,
-  RiHotelLine,
-  RiHospitalLine,
-  RiSunFill,
-  RiPlantFill,
-  RiSparklingFill,
 } from "react-icons/ri";
 import { CONTACT, SITE } from "@/lib/constants";
 import { useLanguage } from "@/lib/LanguageContext";
@@ -30,7 +25,7 @@ export default function HalalIncomePromoModal() {
     setIsOpen(false);
   }, []);
 
-  // Listen for global custom event to open the promo modal from anywhere
+  // Listen for global custom event to open the promo modal
   useEffect(() => {
     const onOpen = () => handleOpen();
     window.addEventListener("open-halal-promo", onOpen);
@@ -85,7 +80,7 @@ export default function HalalIncomePromoModal() {
       aria-modal="true"
       aria-labelledby="halal-promo-title"
       style={{ zIndex: 9999999 }}
-      className="fixed inset-0 flex items-center justify-center p-3 sm:p-5 bg-black/80 backdrop-blur-md overflow-y-auto overscroll-contain animate-fadeIn"
+      className="fixed inset-0 flex items-center justify-center p-3 sm:p-5 bg-black/70 backdrop-blur-sm overflow-y-auto overscroll-contain animate-fadeIn"
     >
       {/* Backdrop click dismiss */}
       <div
@@ -94,18 +89,15 @@ export default function HalalIncomePromoModal() {
         aria-hidden="true"
       />
 
-      {/* Modal Card */}
-      <div className="relative w-full max-w-4xl my-auto bg-gradient-to-br from-slate-950 via-[#0B2518] to-slate-900 text-white rounded-2xl shadow-2xl border border-emerald-500/30 overflow-hidden flex flex-col max-h-[calc(100dvh-2rem)] sm:max-h-[calc(100dvh-3rem)]">
-        {/* Top Gold & Green Stripe */}
-        <div className="h-1.5 w-full bg-gradient-to-r from-amber-400 via-emerald-400 to-amber-300 flex-shrink-0" />
+      {/* Modal Card - Solid White & Clean Minimalist Container */}
+      <div className="relative w-full max-w-4xl my-auto bg-white text-ink-900 rounded-2xl shadow-2xl border border-gray-200 overflow-hidden flex flex-col max-h-[calc(100dvh-2rem)] sm:max-h-[calc(100dvh-3rem)]">
+        {/* Top Solid Green Stripe */}
+        <div className="h-1.5 w-full bg-brand-green-600 flex-shrink-0" />
 
         {/* Modal Header Bar */}
-        <div className="flex items-center justify-between px-4 py-3 sm:px-6 sm:py-3.5 border-b border-emerald-500/20 bg-slate-950/80 backdrop-blur-sm flex-shrink-0">
-          <div className="flex items-center gap-2">
-            <span className="flex items-center justify-center w-6 h-6 rounded-full bg-amber-400 text-slate-950 text-xs font-bold">
-              <RiSparklingFill size={13} />
-            </span>
-            <span className="text-xs sm:text-sm font-bold text-amber-300 uppercase tracking-wider">
+        <div className="flex items-center justify-between px-4 py-3 sm:px-6 sm:py-3.5 border-b border-gray-200 bg-white flex-shrink-0">
+          <div>
+            <span className="text-xs font-bold text-brand-green-800 uppercase tracking-wider">
               {isBn ? "মেগা ইনভেস্টমেন্ট অফার" : "Mega Investment Opportunity"}
             </span>
           </div>
@@ -114,7 +106,7 @@ export default function HalalIncomePromoModal() {
             type="button"
             onClick={handleClose}
             aria-label="Close offer"
-            className="w-8 h-8 flex items-center justify-center text-slate-300 hover:text-white bg-white/10 hover:bg-white/20 rounded-full transition-colors cursor-pointer"
+            className="w-8 h-8 flex items-center justify-center text-ink-500 hover:text-ink-900 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors cursor-pointer"
           >
             <RiCloseLine className="w-5 h-5" />
           </button>
@@ -125,7 +117,7 @@ export default function HalalIncomePromoModal() {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-8 items-center">
             {/* Left Column: Authentic Promotional Poster Image */}
             <div className="md:col-span-5 flex flex-col items-center">
-              <div className="relative w-full aspect-square max-w-[340px] rounded-xl overflow-hidden border-2 border-amber-400/30 shadow-2xl bg-black">
+              <div className="relative w-full aspect-square max-w-[340px] rounded-xl overflow-hidden border border-gray-200 bg-surface-50 shadow-sm">
                 <Image
                   src="/images/shareposterpoup.webp"
                   alt="1 বিনিয়োগে 4 হালাল আয়ের উৎস - সানসেট কুয়াকাটা হোটেল ও রিসোর্ট লিঃ"
@@ -135,7 +127,7 @@ export default function HalalIncomePromoModal() {
                   priority
                 />
               </div>
-              <p className="text-[11px] text-emerald-300/80 mt-2 text-center">
+              <p className="text-[11px] text-ink-500 mt-2 text-center">
                 {isBn
                   ? "সানসেট গ্রুপের অফিসিয়াল বিনিয়োগ অফার পোস্টার"
                   : "Official Sunset Group Investment Offer"}
@@ -145,107 +137,103 @@ export default function HalalIncomePromoModal() {
             {/* Right Column: Structured Value & 4 Halal Income Sources */}
             <div className="md:col-span-7 flex flex-col">
               <div className="mb-4">
+                <span className="inline-block px-2.5 py-0.5 rounded-full bg-brand-green-50 text-brand-green-800 text-xs font-semibold border border-brand-green-200 mb-2">
+                  {isBn ? "বিশেষ মেগা অফার" : "Special Mega Offer"}
+                </span>
+
                 <h2
                   id="halal-promo-title"
-                  className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight leading-snug"
+                  className="text-2xl sm:text-3xl font-bold text-ink-900 tracking-tight leading-snug"
                 >
                   {isBn ? "“১ বিনিয়োগে ৪ হালাল আয়ের উৎস”" : "“1 Investment, 4 Halal Income Streams”"}
                 </h2>
-                <p className="text-xs sm:text-sm text-emerald-200 mt-1 leading-relaxed">
+                <p className="text-xs sm:text-sm text-ink-600 mt-1 leading-relaxed">
                   {isBn
                     ? "এককালীন আজীবন মেম্বারশিপে ৪টি বৃহৎ খাতে নিশ্চিত হালাল আয় ও পারিবারিক বিশেষ সুবিধা:"
                     : "Lifetime membership securing guaranteed halal earnings and family privileges across 4 ventures:"}
                 </p>
               </div>
 
-              {/* 4 Pillars List */}
-              <div className="space-y-3 mb-6">
+              {/* 4 Pillars List - Clean & Minimalist */}
+              <div className="space-y-2.5 mb-6">
                 {/* 1. Dhaka Fantasy Island */}
-                <div className="p-3 rounded-xl bg-white/5 border border-white/10 hover:border-emerald-400/30 transition-all flex items-start gap-3">
-                  <div className="w-9 h-9 rounded-lg bg-emerald-500/20 text-emerald-300 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <RiHotelLine size={20} />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-white text-sm">
-                      {isBn
-                        ? "১. ঢাকা ফ্যান্টাসি আইল্যান্ড (ইকো হোটেল ও রিসোর্ট)"
-                        : "1. Dhaka Fantasy Island (Eco Hotel & Resort)"}
-                    </h3>
-                    <p className="text-xs text-slate-300 mt-0.5 leading-relaxed">
-                      {isBn
-                        ? "মোহাম্মদপুরের হোটেল এন্ড রিসোর্ট থাকা ও অতিথির হালাল আয়ের সুবিধা।"
-                        : "Mohammadpur hotel & eco-resort stay accommodations along with guest halal revenue share."}
-                    </p>
-                  </div>
+                <div className="p-3 rounded-xl bg-surface-50 border border-gray-200/80">
+                  <h3 className="font-bold text-ink-900 text-sm">
+                    {isBn
+                      ? "১. ঢাকা ফ্যান্টাসি আইল্যান্ড"
+                      : "1. Dhaka Fantasy Island"}
+                    <span className="font-normal text-xs text-brand-green-700 ml-1.5">
+                      {isBn ? "(ইকো হোটেল ও রিসোর্ট)" : "(Eco Hotel & Resort)"}
+                    </span>
+                  </h3>
+                  <p className="text-xs text-ink-600 mt-1 leading-relaxed">
+                    {isBn
+                      ? "মোহাম্মদপুরের হোটেল এন্ড রিসোর্ট থাকা ও অতিথির হালাল আয়ের সুবিধা।"
+                      : "Mohammadpur hotel & eco-resort stay accommodations along with guest halal revenue share."}
+                  </p>
                 </div>
 
                 {/* 2. Sun Care Hospital */}
-                <div className="p-3 rounded-xl bg-white/5 border border-white/10 hover:border-emerald-400/30 transition-all flex items-start gap-3">
-                  <div className="w-9 h-9 rounded-lg bg-emerald-500/20 text-emerald-300 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <RiHospitalLine size={20} />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-white text-sm">
-                      {isBn
-                        ? "২. সান কেয়ার হাসপাতাল ও ডায়াগনস্টিক সেন্টার লিমিটেড"
-                        : "2. Sun Care Hospital & Diagnostic Center Ltd."}
-                    </h3>
-                    <p className="text-xs text-slate-300 mt-0.5 leading-relaxed">
-                      {isBn
-                        ? "হাসপাতালের সকল প্রকার সার্ভিস ও ডায়াগনস্টিক খরচে প্রতি খরচের ন্যূনতম ২০% ছাড়ের সুযোগ।"
-                        : "Guaranteed minimum 20% discount on all hospital services and diagnostic tests."}
-                    </p>
-                  </div>
+                <div className="p-3 rounded-xl bg-surface-50 border border-gray-200/80">
+                  <h3 className="font-bold text-ink-900 text-sm">
+                    {isBn
+                      ? "২. সান কেয়ার হাসপাতাল"
+                      : "2. Sun Care Hospital"}
+                    <span className="font-normal text-xs text-brand-green-700 ml-1.5">
+                      {isBn ? "ও ডায়াগনস্টিক সেন্টার লিমিটেড" : "& Diagnostic Center Ltd."}
+                    </span>
+                  </h3>
+                  <p className="text-xs text-ink-600 mt-1 leading-relaxed">
+                    {isBn
+                      ? "হাসপাতালের সকল প্রকার সার্ভিস ও ডায়াগনস্টিক খরচে প্রতি খরচের ন্যূনতম ২০% ছাড়ের সুযোগ।"
+                      : "Guaranteed minimum 20% discount on all hospital services and diagnostic tests."}
+                  </p>
                 </div>
 
                 {/* 3. Sunset Hotel & Resort */}
-                <div className="p-3 rounded-xl bg-white/5 border border-white/10 hover:border-emerald-400/30 transition-all flex items-start gap-3">
-                  <div className="w-9 h-9 rounded-lg bg-emerald-500/20 text-emerald-300 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <RiSunFill size={20} />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-white text-sm">
-                      {isBn
-                        ? "৩. সানসেট হোটেল ও রিসোর্ট"
-                        : "3. Sunset Hotel & Resort"}
-                    </h3>
-                    <p className="text-xs text-slate-300 mt-0.5 leading-relaxed">
-                      {isBn
-                        ? "একই সাথে কুয়াকাটার দুটি হোটেল থাকা ও হালাল আয়ের সুবিধা।"
-                        : "Dual-hotel accommodations in Kuakata paired with ongoing halal dividends."}
-                    </p>
-                  </div>
+                <div className="p-3 rounded-xl bg-surface-50 border border-gray-200/80">
+                  <h3 className="font-bold text-ink-900 text-sm">
+                    {isBn
+                      ? "৩. সানসেট হোটেল ও রিসোর্ট"
+                      : "3. Sunset Hotel & Resort"}
+                    <span className="font-normal text-xs text-brand-green-700 ml-1.5">
+                      {isBn ? "(কুয়াকাটা)" : "(Kuakata)"}
+                    </span>
+                  </h3>
+                  <p className="text-xs text-ink-600 mt-1 leading-relaxed">
+                    {isBn
+                      ? "একই সাথে কুয়াকাটার দুটি হোটেল থাকা ও হালাল আয়ের সুবিধা।"
+                      : "Dual-hotel accommodations in Kuakata paired with ongoing halal dividends."}
+                  </p>
                 </div>
 
                 {/* 4. Mangrove Eco Resort */}
-                <div className="p-3 rounded-xl bg-white/5 border border-white/10 hover:border-emerald-400/30 transition-all flex items-start gap-3">
-                  <div className="w-9 h-9 rounded-lg bg-emerald-500/20 text-emerald-300 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <RiPlantFill size={20} />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-white text-sm">
-                      {isBn
-                        ? "৪. ম্যানগ্রোভ ইকো রিসোর্ট"
-                        : "4. Mangrove Eco Resort"}
-                    </h3>
-                    <p className="text-xs text-slate-300 mt-0.5 leading-relaxed">
-                      {isBn
-                        ? "প্রকৃতির মাঝে ইকো রিসোর্ট থাকায় ও হালাল আয়ের সুবিধা।"
-                        : "Immersive nature eco-resort stays and continuous halal dividend returns."}
-                    </p>
-                  </div>
+                <div className="p-3 rounded-xl bg-surface-50 border border-gray-200/80">
+                  <h3 className="font-bold text-ink-900 text-sm">
+                    {isBn
+                      ? "৪. ম্যানগ্রোভ ইকো রিসোর্ট"
+                      : "4. Mangrove Eco Resort"}
+                    <span className="font-normal text-xs text-brand-green-700 ml-1.5">
+                      {isBn ? "(ইকো রিসোর্ট)" : "(Eco Resort)"}
+                    </span>
+                  </h3>
+                  <p className="text-xs text-ink-600 mt-1 leading-relaxed">
+                    {isBn
+                      ? "প্রকৃতির মাঝে ইকো রিসোর্ট থাকায় ও হালাল আয়ের সুবিধা।"
+                      : "Immersive nature eco-resort stays and continuous halal dividend returns."}
+                  </p>
                 </div>
               </div>
 
               {/* Footer Company Identity & Action Buttons */}
-              <div className="pt-3 border-t border-emerald-500/20 flex flex-col sm:flex-row items-center justify-between gap-3">
-                <div className="text-xs text-emerald-300 font-semibold text-center sm:text-left">
-                  <span>{isBn ? "ফুটার: " : "Parent Group: "}</span>
+              <div className="pt-3 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-3">
+                <div className="text-xs text-ink-700 text-center sm:text-left">
+                  <span className="font-medium text-ink-500">{isBn ? "ফুটার: " : "Parent Group: "}</span>
                   <a
                     href={SITE.parentCompanyUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-amber-300 hover:underline"
+                    className="font-bold text-brand-green-800 hover:text-brand-green-900 hover:underline"
                   >
                     {isBn
                       ? "সানসেট কুয়াকাটা হোটেল ও রিসোর্ট লিমিটেড"
@@ -256,7 +244,7 @@ export default function HalalIncomePromoModal() {
                 <div className="flex items-center gap-2 w-full sm:w-auto">
                   <a
                     href={`tel:${CONTACT.phone1Raw}`}
-                    className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition-colors"
+                    className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-lg bg-brand-green-600 hover:bg-brand-green-700 text-white font-semibold text-xs transition-colors"
                   >
                     <RiPhoneFill size={14} />
                     <span>{isBn ? "কল করুন" : "Call Now"}</span>
@@ -266,9 +254,9 @@ export default function HalalIncomePromoModal() {
                     href={whatsappUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-lg bg-green-500 hover:bg-green-600 text-white font-bold text-xs transition-colors"
+                    className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-lg bg-black hover:bg-ink-900 text-white font-semibold text-xs transition-colors"
                   >
-                    <RiWhatsappFill size={16} />
+                    <RiWhatsappFill size={15} />
                     <span>{isBn ? "হোয়াটসঅ্যাপ" : "WhatsApp"}</span>
                   </a>
                 </div>
