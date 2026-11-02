@@ -52,72 +52,6 @@ export default function Ownership() {
           </p>
         </div>
 
-        {/* 3 Core Investor Value Pillars */}
-        <div className="mb-14">
-          <h3 className="text-lg sm:text-xl font-bold text-ink-900 text-center mb-6">
-            {ownership.whyInvestTitle}
-          </h3>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Pillar 1: At-Cost Healthcare */}
-            <Card hover className="p-6 bg-white border border-gray-100 flex flex-col justify-between">
-              <div>
-                <div className="w-12 h-12 rounded-xl bg-brand-green-50 border border-brand-green-100 flex items-center justify-center text-brand-green-600 mb-4">
-                  <RiUserSharedFill className="w-6 h-6" />
-                </div>
-                <h4 className="text-base sm:text-lg font-bold text-ink-900 mb-2 leading-snug">
-                  {ownership.benefits.atCostTitle}
-                </h4>
-                <p className="text-xs sm:text-sm text-ink-600 leading-relaxed">
-                  {ownership.benefits.atCostDesc}
-                </p>
-              </div>
-              <div className="mt-4 pt-3 border-t border-gray-100 flex items-center gap-2 text-xs font-semibold text-brand-green-700">
-                <RiCheckboxCircleFill className="w-4 h-4 text-brand-green-600 flex-shrink-0" />
-                <span>{lang === "bn" ? "আজীবন ২০ জন মনোনীত সদস্য" : "Lifetime for 20 Nominees"}</span>
-              </div>
-            </Card>
-
-            {/* Pillar 2: Annual Profit Sharing */}
-            <Card hover className="p-6 bg-white border border-gray-100 flex flex-col justify-between">
-              <div>
-                <div className="w-12 h-12 rounded-xl bg-brand-green-50 border border-brand-green-100 flex items-center justify-center text-brand-green-600 mb-4">
-                  <TbCurrencyTaka className="w-7 h-7 stroke-[2.2]" />
-                </div>
-                <h4 className="text-base sm:text-lg font-bold text-ink-900 mb-2 leading-snug">
-                  {ownership.benefits.profitTitle}
-                </h4>
-                <p className="text-xs sm:text-sm text-ink-600 leading-relaxed">
-                  {ownership.benefits.profitDesc}
-                </p>
-              </div>
-              <div className="mt-4 pt-3 border-t border-gray-100 flex items-center gap-2 text-xs font-semibold text-brand-green-700">
-                <RiCheckboxCircleFill className="w-4 h-4 text-brand-green-600 flex-shrink-0" />
-                <span>{lang === "bn" ? "সেলস ও সার্ভিস থেকে লভ্যাংশ" : "Hospital Sales & Service Dividend"}</span>
-              </div>
-            </Card>
-
-            {/* Pillar 3: Saf-Kabala Deed Ownership */}
-            <Card hover className="p-6 bg-white border border-gray-100 flex flex-col justify-between">
-              <div>
-                <div className="w-12 h-12 rounded-xl bg-brand-green-50 border border-brand-green-100 flex items-center justify-center text-brand-green-600 mb-4">
-                  <RiBuilding4Fill className="w-6 h-6" />
-                </div>
-                <h4 className="text-base sm:text-lg font-bold text-ink-900 mb-2 leading-snug">
-                  {ownership.benefits.deedTitle}
-                </h4>
-                <p className="text-xs sm:text-sm text-ink-600 leading-relaxed">
-                  {ownership.benefits.deedDesc}
-                </p>
-              </div>
-              <div className="mt-4 pt-3 border-t border-gray-100 flex items-center gap-2 text-xs font-semibold text-brand-green-700">
-                <RiCheckboxCircleFill className="w-4 h-4 text-brand-green-600 flex-shrink-0" />
-                <span>{lang === "bn" ? "নির্ধারিত বর্গফুট সাফ-কবলা দলিল" : "Registered Deed per Square Foot"}</span>
-              </div>
-            </Card>
-          </div>
-        </div>
-
         {/* 4 Share Ownership Packages Grid */}
         <div className="mb-14">
           <div className="text-center max-w-2xl mx-auto mb-8">
@@ -267,6 +201,72 @@ export default function Ownership() {
                 </div>
               );
             })}
+          </div>
+        </div>
+
+        {/* 3 Core Investor Value Pillars */}
+        <div className="mb-14">
+          <h3 className="text-lg sm:text-xl font-bold text-ink-900 text-center mb-6">
+            {ownership.whyInvestTitle}
+          </h3>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Pillar 1: At-Cost Healthcare */}
+            <Card hover className="p-6 bg-white border border-gray-100 flex flex-col justify-between">
+              <div>
+                <div className="w-12 h-12 rounded-xl bg-brand-green-50 border border-brand-green-100 flex items-center justify-center text-brand-green-600 mb-4">
+                  <RiUserSharedFill className="w-6 h-6" />
+                </div>
+                <h4 className="text-base sm:text-lg font-bold text-ink-900 mb-2 leading-snug">
+                  {ownership.benefits.atCostTitle}
+                </h4>
+                <p className="text-xs sm:text-sm text-ink-600 leading-relaxed">
+                  {ownership.benefits.atCostDesc}
+                </p>
+              </div>
+              <div className="mt-4 pt-3 border-t border-gray-100 flex items-center gap-2 text-xs font-semibold text-brand-green-700">
+                <RiCheckboxCircleFill className="w-4 h-4 text-brand-green-600 flex-shrink-0" />
+                <span>{lang === "bn" ? "আজীবন ২০ জন মনোনীত সদস্য" : "Lifetime for 20 Nominees"}</span>
+              </div>
+            </Card>
+
+            {/* Pillar 2: Annual Profit Sharing */}
+            <Card hover className="p-6 bg-white border border-gray-100 flex flex-col justify-between">
+              <div>
+                <div className="w-12 h-12 rounded-xl bg-brand-green-50 border border-brand-green-100 flex items-center justify-center text-brand-green-600 mb-4">
+                  <TbCurrencyTaka className="w-7 h-7 stroke-[2.2]" />
+                </div>
+                <h4 className="text-base sm:text-lg font-bold text-ink-900 mb-2 leading-snug">
+                  {ownership.benefits.profitTitle}
+                </h4>
+                <p className="text-xs sm:text-sm text-ink-600 leading-relaxed">
+                  {ownership.benefits.profitDesc}
+                </p>
+              </div>
+              <div className="mt-4 pt-3 border-t border-gray-100 flex items-center gap-2 text-xs font-semibold text-brand-green-700">
+                <RiCheckboxCircleFill className="w-4 h-4 text-brand-green-600 flex-shrink-0" />
+                <span>{lang === "bn" ? "সেলস ও সার্ভিস থেকে লভ্যাংশ" : "Hospital Sales & Service Dividend"}</span>
+              </div>
+            </Card>
+
+            {/* Pillar 3: Saf-Kabala Deed Ownership */}
+            <Card hover className="p-6 bg-white border border-gray-100 flex flex-col justify-between">
+              <div>
+                <div className="w-12 h-12 rounded-xl bg-brand-green-50 border border-brand-green-100 flex items-center justify-center text-brand-green-600 mb-4">
+                  <RiBuilding4Fill className="w-6 h-6" />
+                </div>
+                <h4 className="text-base sm:text-lg font-bold text-ink-900 mb-2 leading-snug">
+                  {ownership.benefits.deedTitle}
+                </h4>
+                <p className="text-xs sm:text-sm text-ink-600 leading-relaxed">
+                  {ownership.benefits.deedDesc}
+                </p>
+              </div>
+              <div className="mt-4 pt-3 border-t border-gray-100 flex items-center gap-2 text-xs font-semibold text-brand-green-700">
+                <RiCheckboxCircleFill className="w-4 h-4 text-brand-green-600 flex-shrink-0" />
+                <span>{lang === "bn" ? "নির্ধারিত বর্গফুট সাফ-কবলা দলিল" : "Registered Deed per Square Foot"}</span>
+              </div>
+            </Card>
           </div>
         </div>
 
