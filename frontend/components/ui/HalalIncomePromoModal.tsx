@@ -91,9 +91,6 @@ export default function HalalIncomePromoModal() {
 
       {/* Modal Card - Solid White & Clean Minimalist Container */}
       <div className="relative w-full max-w-4xl my-auto bg-white text-ink-900 rounded-2xl shadow-2xl border border-gray-200 overflow-hidden flex flex-col max-h-[calc(100dvh-2rem)] sm:max-h-[calc(100dvh-3rem)]">
-        {/* Top Solid Green Stripe */}
-        <div className="h-1.5 w-full bg-brand-green-600 flex-shrink-0" />
-
         {/* Modal Header Bar */}
         <div className="flex items-center justify-between px-4 py-3 sm:px-6 sm:py-3.5 border-b border-gray-200 bg-white flex-shrink-0">
           <div>
