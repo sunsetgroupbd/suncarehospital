@@ -4,7 +4,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
-import { RiPhoneFill, RiArrowUpLine, RiShieldCheckFill } from "react-icons/ri";
+import { RiPhoneFill, RiArrowUpLine, RiShieldCheckFill, RiMegaphoneFill } from "react-icons/ri";
 import { CONTACT } from "@/lib/constants";
 import { useLanguage } from "@/lib/LanguageContext";
 
@@ -35,6 +35,7 @@ export default function FloatingButtons() {
           className="flex items-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-full bg-[#0B2518] text-white border border-brand-green-700/60 hover:bg-black font-semibold text-[11px] sm:text-xs shadow-md transition-colors cursor-pointer"
           aria-label={lang === "bn" ? "১ বিনিয়োগে ৪ হালাল আয়ের সুযোগ" : "1 Investment 4 Halal Returns"}
         >
+          <RiMegaphoneFill className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" aria-hidden="true" />
           <span>{lang === "bn" ? "৪ হালাল আয়ের সুযোগ" : "4 Halal Income Offer"}</span>
         </button>
       </div>

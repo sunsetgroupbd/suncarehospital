@@ -254,7 +254,7 @@ export default function Ownership() {
                   </span>
 
                   <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-ink-900 tracking-tight leading-snug">
-                    {lang === "bn" ? "“১ বিনিয়োগে ৪ হালাল আয়ের উৎস”" : "“1 Investment, 4 Halal Income Streams”"}
+                    {lang === "bn" ? "১ বিনিয়োগে ৪ হালাল আয়ের উৎস" : "1 Investment, 4 Halal Income Streams"}
                   </h3>
 
                   <p className="text-xs sm:text-sm text-ink-600 mt-2 leading-relaxed">

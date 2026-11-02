@@ -145,7 +145,7 @@ export default function HalalIncomePromoModal() {
                   id="halal-promo-title"
                   className="text-2xl sm:text-3xl font-bold text-ink-900 tracking-tight leading-snug"
                 >
-                  {isBn ? "“১ বিনিয়োগে ৪ হালাল আয়ের উৎস”" : "“1 Investment, 4 Halal Income Streams”"}
+                  {isBn ? "১ বিনিয়োগে ৪ হালাল আয়ের উৎস" : "1 Investment, 4 Halal Income Streams"}
                 </h2>
                 <p className="text-xs sm:text-sm text-ink-600 mt-1 leading-relaxed">
                   {isBn
