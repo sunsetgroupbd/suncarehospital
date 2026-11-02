@@ -7,7 +7,6 @@ import { useState } from "react";
 import Image from "next/image";
 import {
   RiShieldCheckFill,
-  RiCoinsFill,
   RiBuilding4Fill,
   RiUserSharedFill,
   RiPhoneFill,
@@ -16,6 +15,7 @@ import {
   RiCloseLine,
   RiMapPin2Fill,
 } from "react-icons/ri";
+import { TbCurrencyTaka } from "react-icons/tb";
 import SectionTag from "@/components/ui/SectionTag";
 import Card from "@/components/ui/Card";
 import { useLanguage } from "@/lib/LanguageContext";
@@ -82,7 +82,7 @@ export default function Ownership() {
             <Card hover className="p-6 bg-white border border-gray-100 flex flex-col justify-between">
               <div>
                 <div className="w-12 h-12 rounded-xl bg-brand-green-50 border border-brand-green-100 flex items-center justify-center text-brand-green-600 mb-4">
-                  <RiCoinsFill className="w-6 h-6" />
+                  <TbCurrencyTaka className="w-7 h-7 stroke-[2.2]" />
                 </div>
                 <h4 className="text-base sm:text-lg font-bold text-ink-900 mb-2 leading-snug">
                   {ownership.benefits.profitTitle}
