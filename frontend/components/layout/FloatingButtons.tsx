@@ -33,10 +33,10 @@ export default function FloatingButtons() {
           type="button"
           onClick={() => window.dispatchEvent(new CustomEvent("open-halal-promo"))}
           className="flex items-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-full bg-[#0B2518] text-white border border-brand-green-700/60 hover:bg-black font-semibold text-[11px] sm:text-xs shadow-md transition-colors cursor-pointer"
-          aria-label={lang === "bn" ? "১ বিনিয়োগে ৪ হালাল আয়ের সুযোগ" : "1 Investment 4 Halal Returns"}
+          aria-label={lang === "bn" ? "১ বিনিয়োগে ৪ হালাল আয়" : "1 Invest 4 Halal Income"}
         >
           <RiMegaphoneFill className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" aria-hidden="true" />
-          <span>{lang === "bn" ? "৪ হালাল আয়ের সুযোগ" : "4 Halal Income Offer"}</span>
+          <span>{lang === "bn" ? "১ বিনিয়োগে ৪ হালাল আয়" : "1 Invest 4 Halal Income"}</span>
         </button>
       </div>
 
