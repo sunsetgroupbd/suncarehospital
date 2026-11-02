@@ -10,10 +10,13 @@ export default function Card({
   className = "",
   hover = true,
 }: CardProps) {
+  const hasPadding = /(^|\s)p[xytbrl]?-/.test(className);
+
   return (
     <div
       className={[
-        "bg-white rounded-xl border border-gray-100 shadow-subtle p-6",
+        "bg-white rounded-xl border border-gray-100 shadow-subtle",
+        !hasPadding && "p-6",
         hover && "transition-colors duration-200 hover:border-brand-green-500",
         className,
       ]

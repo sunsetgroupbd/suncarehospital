@@ -27,28 +27,27 @@ export default function WhyChooseUs() {
   return (
     <section
       id="why-us"
-      className="py-20 md:py-28 bg-[#0B2518] text-white"
+      className="py-16 md:py-28 bg-[#0B2518] text-white"
       aria-labelledby="why-us-heading"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
         {/* Section header */}
-        <div className="text-center mb-16 md:mb-20 flex flex-col items-center gap-3">
+        <div className="text-center mb-10 md:mb-20 flex flex-col items-center gap-3">
           <SectionTag light>{t.whyUs.tag}</SectionTag>
           <h2
             id="why-us-heading"
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white max-w-2xl tracking-tight"
+            className="text-2xl sm:text-4xl lg:text-5xl font-bold text-white max-w-2xl tracking-tight"
           >
             {t.whyUs.headline}
           </h2>
-          <p className="text-slate-300 text-base max-w-2xl leading-relaxed">
+          <p className="text-slate-300 text-sm sm:text-base max-w-2xl leading-relaxed">
             {t.whyUs.sub}
           </p>
         </div>
 
-        {/* Benefits Grid with rounded-xl */}
+        {/* Benefits Grid - 2 columns on mobile, 3 columns on desktop */}
         <div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
+          className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5"
           role="list"
           aria-label="Why choose Sun Care Hospital"
         >
@@ -61,19 +60,19 @@ export default function WhyChooseUs() {
               <div
                 key={item.title}
                 role="listitem"
-                className="p-6 rounded-xl bg-white/5 border border-white/10 flex flex-col gap-4 hover:bg-white/8 transition-colors duration-150"
+                className="p-3.5 sm:p-6 rounded-xl bg-white/5 border border-white/10 flex flex-col gap-2.5 sm:gap-4 hover:bg-white/8 transition-colors duration-150"
               >
                 <div
-                  className="w-11 h-11 rounded-lg bg-emerald-500/15 text-emerald-400 flex items-center justify-center flex-shrink-0"
+                  className="w-9 h-9 sm:w-11 sm:h-11 rounded-lg bg-emerald-500/15 text-emerald-400 flex items-center justify-center flex-shrink-0"
                   aria-hidden="true"
                 >
-                  <Icon size={22} />
+                  <Icon className="text-lg sm:text-[22px]" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-white text-lg mb-2 leading-snug">
+                  <h3 className="font-bold text-white text-sm sm:text-lg mb-1 sm:mb-2 leading-snug">
                     {title}
                   </h3>
-                  <p className="text-slate-300 text-sm leading-relaxed">
+                  <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
                     {desc}
                   </p>
                 </div>
