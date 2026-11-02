@@ -1,12 +1,15 @@
 "use client";
 // components/layout/FloatingButtons.tsx
-// Floating emergency call button (mobile) + back-to-top button
+// Floating action buttons for mobile: Share & Invest + Emergency Call + Back-to-top
 
 import { useState, useEffect, useCallback } from "react";
-import { RiPhoneFill, RiArrowUpLine } from "react-icons/ri";
+import Link from "next/link";
+import { RiPhoneFill, RiArrowUpLine, RiShieldCheckFill } from "react-icons/ri";
 import { CONTACT } from "@/lib/constants";
+import { useLanguage } from "@/lib/LanguageContext";
 
 export default function FloatingButtons() {
+  const { lang } = useLanguage();
   const [showTop, setShowTop] = useState(false);
 
   const handleScroll = useCallback(() => {
@@ -24,7 +27,7 @@ export default function FloatingButtons() {
 
   return (
     <div
-      className="fixed bottom-6 right-5 z-50 flex flex-col gap-3 items-end"
+      className="fixed bottom-5 right-4 z-50 flex flex-col gap-2.5 items-end"
       role="complementary"
       aria-label="Floating action buttons"
     >
@@ -32,7 +35,7 @@ export default function FloatingButtons() {
       <button
         onClick={scrollToTop}
         className={[
-          "w-10 h-10 rounded-full bg-white border border-gray-100 shadow-subtle",
+          "w-9 h-9 rounded-full bg-white/95 backdrop-blur-sm border border-gray-200 shadow-md",
           "flex items-center justify-center text-ink-900",
           "hover:bg-brand-green-600 hover:text-white hover:border-brand-green-600",
           "transition-all duration-150 cursor-pointer",
@@ -42,22 +45,27 @@ export default function FloatingButtons() {
         ].join(" ")}
         aria-label="Back to top"
       >
-        <RiArrowUpLine size={18} aria-hidden="true" />
+        <RiArrowUpLine size={17} aria-hidden="true" />
       </button>
+
+      {/* Share & Investment pill — mobile only */}
+      <Link
+        href="/#ownership"
+        className="flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-slate-900 text-amber-300 border border-amber-400/40 font-bold text-xs shadow-lg hover:bg-slate-800 active:scale-95 transition-all md:hidden"
+        aria-label={lang === "bn" ? "শেয়ার ও বিনিয়োগ" : "Share & Invest"}
+      >
+        <RiShieldCheckFill className="w-4 h-4 text-amber-400 flex-shrink-0" aria-hidden="true" />
+        <span>{lang === "bn" ? "শেয়ার ও বিনিয়োগ" : "Share & Invest"}</span>
+      </Link>
 
       {/* Emergency Call pill — mobile only */}
       <a
         href={`tel:${CONTACT.phone1Raw}`}
-        className={[
-          "flex items-center gap-2 px-4 py-2.5 rounded-full",
-          "bg-brand-red-500 text-white font-bold text-sm",
-          "hover:bg-brand-red-600 transition-colors active:scale-95 shadow-subtle",
-          "md:hidden",
-        ].join(" ")}
+        className="flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-brand-red-500 text-white font-bold text-xs shadow-lg hover:bg-brand-red-600 active:scale-95 transition-all md:hidden"
         aria-label={`Emergency Call: ${CONTACT.phone1}`}
       >
-        <RiPhoneFill size={16} aria-hidden="true" />
-        <span>Emergency Call</span>
+        <RiPhoneFill size={15} aria-hidden="true" />
+        <span>{lang === "bn" ? "জরুরি কল" : "Emergency Call"}</span>
       </a>
     </div>
   );

@@ -29,8 +29,10 @@
 
   /* Typography */
   --font-poppins: var(--font-poppins), "Poppins", sans-serif;
-  --font-hind-siliguri: var(--font-hind-siliguri), "Hind Siliguri", sans-serif;
-  --font-sans: var(--font-poppins);
+  --font-hind-siliguri: var(--font-hind-siliguri), "Hind Siliguri", "Noto Sans Bengali", sans-serif;
+  --font-noto-bengali: var(--font-noto-bengali), "Noto Sans Bengali", sans-serif;
+  --font-sans: var(--font-poppins), var(--font-hind-siliguri), sans-serif;
+  --font-heading: var(--font-hind-siliguri), var(--font-poppins), sans-serif;
 
   /* Radius */
   --radius-lg: 0.5rem;
@@ -76,14 +78,27 @@ html {
 }
 
 body {
-  font-family: var(--font-poppins), "Segoe UI", Arial, sans-serif;
+  font-family: var(--font-poppins), var(--font-hind-siliguri), "Segoe UI", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #ffffff;
 }
 
+/* Headings inherit Hind Siliguri for authentic, natural, and fluid headline typography */
+h1, h2, h3, h4, h5, h6, .font-heading {
+  font-family: var(--font-hind-siliguri), var(--font-poppins), sans-serif;
+}
+
+/* All Bengali text - Headings and Body - use the unified, proven Hind Siliguri font */
 .font-bangla, [lang="bn"], [lang="bn"] * {
-  font-family: var(--font-hind-siliguri), "Hind Siliguri", "Kalpurush", sans-serif;
+  font-family: var(--font-hind-siliguri), "Hind Siliguri", var(--font-noto-bengali), "Noto Sans Bengali", "Kalpurush", sans-serif;
+}
+
+/* Bengali Headings specifically render with bold Hind Siliguri */
+[lang="bn"] h1, [lang="bn"] h2, [lang="bn"] h3, [lang="bn"] h4, [lang="bn"] h5, [lang="bn"] h6,
+.font-bangla h1, .font-bangla h2, .font-bangla h3, .font-bangla h4,
+[lang="bn"] .font-heading {
+  font-family: var(--font-hind-siliguri), "Hind Siliguri", "Noto Sans Bengali", sans-serif;
 }
 
 :focus-visible {

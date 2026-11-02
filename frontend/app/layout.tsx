@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Poppins, Hind_Siliguri } from "next/font/google";
+import { Poppins, Hind_Siliguri, Noto_Sans_Bengali } from "next/font/google";
 import "./globals.css";
 import { SITE, CONTACT, ADDRESS } from "@/lib/constants";
 import DevelopmentNoticeModal from "@/components/ui/DevelopmentNoticeModal";
@@ -16,6 +16,13 @@ const hindSiliguri = Hind_Siliguri({
   subsets: ["bengali", "latin"],
   weight: ["300", "400", "500", "600", "700"],
   variable: "--font-hind-siliguri",
+  display: "swap",
+});
+
+const notoSansBengali = Noto_Sans_Bengali({
+  subsets: ["bengali"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-noto-bengali",
   display: "swap",
 });
 
@@ -138,14 +145,17 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/onlylogo.png", sizes: "any", type: "image/png" },
-      { url: "/app/icon.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon.ico", sizes: "48x48" },
+      { url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" },
+      { url: "/web-app-manifest-192x192.png", sizes: "192x192", type: "image/png" },
+      { url: "/web-app-manifest-512x512.png", sizes: "512x512", type: "image/png" },
     ],
-    shortcut: "/onlylogo.png",
+    shortcut: "/favicon.ico",
     apple: [
-      { url: "/onlylogo.png", sizes: "180x180", type: "image/png" },
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
     ],
   },
+  manifest: "/site.webmanifest",
   verification: {
     google: "google-site-verification-placeholder",
   },
@@ -244,7 +254,7 @@ interface LayoutProps {
 
 export default function RootLayout({ children }: LayoutProps) {
   return (
-    <html lang="en" className={`${poppins.variable} ${hindSiliguri.variable} h-full`}>
+    <html lang="en" className={`${poppins.variable} ${hindSiliguri.variable} ${notoSansBengali.variable} h-full`}>
       <head>
         <script
           type="application/ld+json"

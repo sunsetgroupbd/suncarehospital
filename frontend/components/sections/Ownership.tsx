@@ -14,6 +14,7 @@ import {
   RiCheckboxCircleFill,
   RiEyeLine,
   RiCloseLine,
+  RiMapPin2Fill,
 } from "react-icons/ri";
 import SectionTag from "@/components/ui/SectionTag";
 import Card from "@/components/ui/Card";
@@ -128,59 +129,103 @@ export default function Ownership() {
             </p>
           </div>
 
+          {/* Always-Visible Official Membership Packages Flyer Graphic */}
+          <div className="mb-10 rounded-2xl overflow-hidden border border-gray-200 bg-white shadow-elevated p-3 sm:p-5 max-w-5xl mx-auto">
+            <div
+              onClick={() => setLeafletOpen(true)}
+              className="relative w-full aspect-[1909/824] rounded-xl overflow-hidden bg-gray-50 cursor-pointer group"
+              title={lang === "bn" ? "পূর্ণ স্ক্রিনে দেখতে ক্লিক করুন" : "Click to view full size"}
+            >
+              <Image
+                src="/images/Sun Care Hospital Membership Packages.webp"
+                alt="Sun Care Hospital Official Membership Packages - Platinum, Gold, Silver, Bronze"
+                fill
+                sizes="(max-width: 1280px) 100vw, 1100px"
+                className="object-contain group-hover:scale-[1.01] transition-transform duration-300"
+                priority
+              />
+            </div>
+            <div className="mt-3 flex items-center justify-between text-xs text-ink-600 px-1 pt-1 border-t border-gray-100">
+              <span className="font-medium">
+                {lang === "bn"
+                  ? "সান কেয়ার হাসপাতাল অনুমোদিত মেম্বারশিপ কার্ড ও শেয়ার প্যাকেজসমূহ"
+                  : "Official Sun Care Hospital Membership Smart Cards & Share Structure"}
+              </span>
+              <button
+                type="button"
+                onClick={() => setLeafletOpen(true)}
+                className="inline-flex items-center gap-1.5 text-brand-green-700 hover:text-brand-green-800 font-semibold cursor-pointer"
+              >
+                <RiEyeLine className="w-3.5 h-3.5" />
+                <span>{lang === "bn" ? "বড় করে দেখুন" : "View Fullscreen"}</span>
+              </button>
+            </div>
+          </div>
+
+          {/* Package Details Cards - Text & Specifications Only */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {ownership.packages.map((pkg) => {
               const isPlatinum = pkg.id === "platinum";
+              const isGold = pkg.id === "gold";
+              const isSilver = pkg.id === "silver";
+
+              const tierBadgeClass = isPlatinum
+                ? "bg-slate-900 text-amber-300 border-slate-700"
+                : isGold
+                ? "bg-amber-500 text-white border-amber-600"
+                : isSilver
+                ? "bg-slate-600 text-white border-slate-700"
+                : "bg-[#8C532B] text-white border-[#734321]";
+
+              const cardBorderClass = isPlatinum
+                ? "border-slate-800 shadow-elevated ring-1 ring-slate-900/10"
+                : isGold
+                ? "border-amber-300 shadow-subtle hover:border-amber-400"
+                : isSilver
+                ? "border-slate-200 shadow-subtle hover:border-slate-400"
+                : "border-amber-900/20 shadow-subtle hover:border-amber-900/40";
 
               return (
                 <div
                   key={pkg.id}
-                  className={`relative rounded-xl bg-white border transition-all duration-200 flex flex-col justify-between overflow-hidden ${
-                    isPlatinum
-                      ? "border-brand-green-600 shadow-elevated ring-1 ring-brand-green-600"
-                      : "border-gray-100 hover:border-gray-200 shadow-subtle hover:shadow-md"
-                  }`}
+                  className={`relative rounded-xl bg-white border transition-all duration-200 flex flex-col justify-between overflow-hidden ${cardBorderClass}`}
                 >
                   {/* Top Popular Badge for Platinum */}
                   {isPlatinum && (
-                    <div className="bg-brand-green-600 text-white text-[11px] font-bold text-center py-1 tracking-wider uppercase">
-                      {lang === "bn" ? "সর্বোচ্চ সুবিধা ও অগ্রাধিকার" : "Most Popular & Complete"}
+                    <div className="bg-slate-900 text-amber-300 text-[11px] font-bold text-center py-1.5 tracking-wider uppercase border-b border-slate-800">
+                      ★ {lang === "bn" ? "সর্বোচ্চ সুবিধা ও অগ্রাধিকার" : "Most Popular & Complete"}
                     </div>
                   )}
 
                   <div className="p-5 sm:p-6 flex-1 flex flex-col">
-                    {/* Card Mockup Graphic */}
-                    <div className="relative w-full h-24 sm:h-28 rounded-lg overflow-hidden mb-4 bg-gray-50 flex items-center justify-center border border-gray-100">
-                      <Image
-                        src={pkg.cardImg}
-                        alt={pkg.cardName}
-                        fill
-                        sizes="(max-width: 640px) 100vw, 25vw"
-                        className="object-contain p-2 hover:scale-105 transition-transform duration-200"
-                      />
+                    {/* Tier Badge & Space Allocation */}
+                    <div className="flex items-center justify-between gap-2 mb-3">
+                      <span
+                        className={`text-[11px] font-bold px-2.5 py-0.5 rounded-full border uppercase tracking-wider ${tierBadgeClass}`}
+                      >
+                        {pkg.id}
+                      </span>
+                      <span className="text-xs font-semibold text-brand-green-700 bg-brand-green-50 px-2 py-0.5 rounded">
+                        {pkg.space}
+                      </span>
                     </div>
 
                     {/* Title */}
-                    <h4 className="text-lg font-bold text-ink-900 mb-1">
+                    <h4 className="text-lg sm:text-xl font-bold text-ink-900 mb-4 leading-snug">
                       {lang === "bn" ? pkg.nameBn : pkg.name}
                     </h4>
 
-                    {/* Space Allocation */}
-                    <div className="inline-block text-xs font-semibold text-brand-green-700 bg-brand-green-50 px-2 py-0.5 rounded mb-4">
-                      {pkg.space}
-                    </div>
-
                     {/* Price and Booking Breakdown */}
-                    <div className="space-y-2 py-3 border-y border-gray-100 text-xs mb-4">
+                    <div className="space-y-2 py-3 px-3.5 bg-surface-50 rounded-lg border border-gray-100 text-xs mb-5">
                       <div className="flex items-center justify-between">
                         <span className="text-ink-600 font-medium">
                           {lang === "bn" ? "মূল্য (Price):" : "Total Price:"}
                         </span>
-                        <span className="text-sm font-bold text-ink-900">
+                        <span className="text-sm sm:text-base font-bold text-ink-900">
                           {pkg.price}
                         </span>
                       </div>
-                      <div className="flex items-center justify-between">
+                      <div className="flex items-center justify-between pt-1.5 border-t border-gray-200/60">
                         <span className="text-ink-600 font-medium">
                           {lang === "bn" ? "বুকিং মানি:" : "Booking Money:"}
                         </span>
@@ -191,17 +236,17 @@ export default function Ownership() {
                     </div>
 
                     {/* Quick Features */}
-                    <ul className="text-xs text-ink-700 space-y-2 mb-6 flex-1">
-                      <li className="flex items-center gap-1.5">
-                        <RiCheckboxCircleFill className="w-3.5 h-3.5 text-brand-green-600 flex-shrink-0" />
+                    <ul className="text-xs text-ink-700 space-y-2.5 mb-6 flex-1">
+                      <li className="flex items-start gap-2">
+                        <RiCheckboxCircleFill className="w-4 h-4 text-brand-green-600 flex-shrink-0 mt-0.5" />
                         <span>{lang === "bn" ? "২০ জনের খরচ মূল্যে চিকিৎসা" : "At-cost care for 20 nominees"}</span>
                       </li>
-                      <li className="flex items-center gap-1.5">
-                        <RiCheckboxCircleFill className="w-3.5 h-3.5 text-brand-green-600 flex-shrink-0" />
+                      <li className="flex items-start gap-2">
+                        <RiCheckboxCircleFill className="w-4 h-4 text-brand-green-600 flex-shrink-0 mt-0.5" />
                         <span>{lang === "bn" ? "বাৎসরিক লভ্যাংশ অংশীদারিত্ব" : "Annual dividend profit share"}</span>
                       </li>
-                      <li className="flex items-center gap-1.5">
-                        <RiCheckboxCircleFill className="w-3.5 h-3.5 text-brand-green-600 flex-shrink-0" />
+                      <li className="flex items-start gap-2">
+                        <RiCheckboxCircleFill className="w-4 h-4 text-brand-green-600 flex-shrink-0 mt-0.5" />
                         <span>{lang === "bn" ? "সাফ-কবলা আজীবন দলিল" : "Saf-Kabala deed registration"}</span>
                       </li>
                     </ul>
@@ -211,8 +256,8 @@ export default function Ownership() {
                       href={`tel:${CONTACT.phone1Raw}`}
                       className={`w-full py-2.5 px-3 rounded-lg text-xs sm:text-sm font-semibold flex items-center justify-center gap-1.5 transition-colors ${
                         isPlatinum
-                          ? "bg-brand-green-600 hover:bg-brand-green-700 text-white"
-                          : "bg-surface-100 hover:bg-surface-200 text-ink-900 border border-gray-200"
+                          ? "bg-slate-900 hover:bg-slate-800 text-amber-300"
+                          : "bg-brand-green-600 hover:bg-brand-green-700 text-white"
                       }`}
                     >
                       <RiPhoneFill className="w-3.5 h-3.5" />
@@ -276,8 +321,9 @@ export default function Ownership() {
             <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
               {ownership.ctaDesc}
             </p>
-            <div className="mt-2 text-xs text-emerald-400 font-medium">
-              📍 {ADDRESS.full}
+            <div className="mt-2 text-xs text-emerald-400 font-medium flex items-center gap-1.5 justify-center md:justify-start">
+              <RiMapPin2Fill className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" aria-hidden="true" />
+              <span>{ADDRESS.full}</span>
             </div>
           </div>
 

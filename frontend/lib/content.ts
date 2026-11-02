@@ -296,9 +296,9 @@ const en: ContentShape = {
     sub: "Built on international medical protocols, cutting-edge technology, and compassionate patient care.",
   },
   doctors: {
-    tag: "Medical Experts",
-    headline: "Our Senior Medical Consultants",
-    sub: "Dedicated medical professionals providing comprehensive clinical care across all specialties.",
+    tag: "Consultant Faculty",
+    headline: "Specialist Medical Consultant Panels",
+    sub: "Sun Care Hospital features renowned professors and specialist clinical consultant panels across all major healthcare disciplines.",
   },
   appointment: {
     tag: "Consultation Request",
@@ -326,9 +326,9 @@ const en: ContentShape = {
     ],
   },
   testimonials: {
-    tag: "Patient Experiences",
-    headline: "Trusted by Families Across Dhaka",
-    sub: "Read what patients and families say about our medical care and diagnostic services.",
+    tag: "Investor & Partner Perspectives",
+    headline: "Trusted by Our Shareholders & Investors",
+    sub: "Hear from our valued shareholders and permanent deed co-owners who have invested in the healthcare future of Sun Care Hospital & Diagnostic Center Ltd.",
   },
   contact: {
     tag: "Reach Us",
@@ -502,9 +502,9 @@ const bn: ContentShape = {
     sub: "আন্তর্জাতিক চিকিৎসা প্রোটোকল, সর্বাধুনিক ডায়াগনস্টিক যন্ত্রপাতি এবং আন্তরিক সেবায় গড়ে উঠেছে আমাদের হাসপাতাল।",
   },
   doctors: {
-    tag: "চিকিৎসকবৃন্দ",
-    headline: "অভিজ্ঞ কনসালটেন্ট ও বিশেষজ্ঞ ডাক্তার",
-    sub: "প্রতিটি চিকিৎসা বিভাগে রোগীদের সঠিক ও দ্রুত চিকিৎসা প্রদানে নিবেদিত প্রাণ বিশেষজ্ঞ চিকিৎসকগণ।",
+    tag: "বিশেষজ্ঞ কনসালটেন্ট প্যানেল",
+    headline: "অভিজ্ঞ বিশেষজ্ঞ চিকিৎসক প্যানেল",
+    sub: "প্রতিটি চিকিৎসা বিভাগে রোগীদের সঠিক ও নির্ভরযোগ্য সেবা প্রদানে নিবেদিত অভিজ্ঞ সিনিয়র কনসালটেন্ট চিকিৎসক প্যানেল।",
   },
   appointment: {
     tag: "অ্যাপয়েন্টমেন্ট বুকিং",
@@ -532,9 +532,9 @@ const bn: ContentShape = {
     ],
   },
   testimonials: {
-    tag: "রোগীদের অভিজ্ঞতা",
-    headline: "রোগী ও পরিবারের আস্থার প্রতীক",
-    sub: "আমাদের সেবা ও ডায়াগনস্টিক সুবিধা নিয়ে সন্তুষ্ট রোগীদের প্রতিক্রিয়া।",
+    tag: "বিনিয়োগকারী ও অংশীদারদের আস্থা",
+    headline: "সম্মানিত শেয়ার মালিক ও বিনিয়োগকারীদের অভিমত",
+    sub: "সান কেয়ার হাসপাতালের অংশীদারিত্ব, আজীবন সাফ-কবলা মালিকানা ও ২০ জনের চিকিৎসা সুবিধা নিয়ে সম্মানিত শেয়ার ক্রেতাদের প্রতিক্রিয়া।",
   },
   contact: {
     tag: "যোগাযোগ",
