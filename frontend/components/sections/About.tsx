@@ -26,38 +26,43 @@ export default function About() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
-          {/* Left: Solid architectural frame with official logo */}
+          {/* Left: Hospital Infrastructure & Clinical Care Vector Illustration */}
           <div className="lg:col-span-5 flex justify-center">
-            <div className="relative w-full max-w-md">
-              <div className="bg-surface-50 rounded-xl p-8 border border-gray-100 shadow-subtle flex flex-col items-center gap-6">
-                <div className="relative w-44 h-44 sm:w-48 sm:h-48 bg-white rounded-lg p-4 border border-gray-100 flex items-center justify-center">
-                  <Image
-                    src="/images/logo.png"
-                    alt={`${SITE.name} emblem`}
-                    fill
-                    sizes="(max-width: 640px) 176px, 192px"
-                    className="object-contain p-2"
-                  />
-                </div>
-                
-                {/* Reassurance text */}
-                <div className="flex items-center gap-2 px-3.5 py-1.5 bg-white rounded-md border border-gray-100 shadow-subtle">
-                  <RiHeartPulseFill size={16} className="text-brand-green-600 flex-shrink-0" aria-hidden="true" />
+            <div className="relative w-full max-w-lg flex flex-col gap-3.5">
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-gray-200 bg-surface-50 shadow-subtle p-2">
+                <Image
+                  src="/illustration.svg"
+                  alt={`${SITE.name} Hospital & Diagnostic Infrastructure`}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 480px"
+                  className="object-contain"
+                  priority
+                  unoptimized
+                />
+              </div>
+              
+              {/* Reassurance text */}
+              <div className="flex items-center justify-between gap-3 px-4 py-2.5 bg-surface-50 rounded-xl border border-gray-200 shadow-xs">
+                <div className="flex items-center gap-2">
+                  <RiHeartPulseFill size={18} className="text-brand-green-600 flex-shrink-0" aria-hidden="true" />
                   <span className="text-xs font-bold text-ink-900 tracking-wider uppercase">
-                    {lang === "bn" ? "রোগী-বান্ধব উন্নত স্বাস্থ্যসেবা" : "Patient-First Healthcare"}
+                    {lang === "bn" ? "রোগী-বান্ধব আধুনিক স্বাস্থ্যসেবা" : "Patient-First Modern Healthcare"}
                   </span>
                 </div>
+                <span className="text-xs font-semibold text-brand-green-800 bg-brand-green-50 px-2 py-0.5 rounded border border-brand-green-200">
+                  {lang === "bn" ? "২৪/৭ সার্বক্ষণিক" : "24/7 Active"}
+                </span>
+              </div>
 
-                <div className="text-center">
-                  <a
-                    href={SITE.parentCompanyUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-xs text-brand-green-800 hover:text-brand-green-600 font-semibold transition-colors no-underline"
-                  >
-                    {SITE.parentCompany}
-                  </a>
-                </div>
+              <div className="text-center pt-0.5">
+                <a
+                  href={SITE.parentCompanyUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs text-brand-green-800 hover:text-brand-green-600 font-semibold transition-colors no-underline"
+                >
+                  {SITE.parentCompany}
+                </a>
               </div>
             </div>
           </div>
