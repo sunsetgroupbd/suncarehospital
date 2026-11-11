@@ -6,7 +6,6 @@ import {
   RiCalendarFill,
   RiPhoneFill,
   RiCheckboxCircleFill,
-  RiMapPin2Fill,
   RiFilePdfFill,
 } from "react-icons/ri";
 import Button from "@/components/ui/Button";
@@ -86,52 +85,21 @@ export default function Hero() {
                   </div>
                 ))}
 
-                {/* Top overlay badge: authentic logo mark & dynamic slide badge */}
-                <div className="absolute top-3.5 left-3.5 z-20 flex items-center gap-2 px-3 py-1.5 bg-white/95 backdrop-blur-sm rounded-lg border border-gray-100 shadow-subtle">
-                  <div className="relative w-5 h-5 flex-shrink-0">
-                    <Image
-                      src="/onlylogo.png"
-                      alt={SITE.shortName}
-                      fill
-                      sizes="20px"
-                      className="object-contain"
-                    />
+                {/* Minimal slide indicator dots at bottom */}
+                <div className="absolute bottom-3 inset-x-0 z-20 flex items-center justify-center pointer-events-none">
+                  <div className="flex items-center gap-1.5 bg-black/40 backdrop-blur-sm px-2.5 py-1 rounded-full pointer-events-auto">
+                    {slides.map((_, i) => (
+                      <button
+                        key={i}
+                        type="button"
+                        onClick={() => setCurrentSlide(i)}
+                        className={`h-1.5 rounded-full transition-all cursor-pointer ${
+                          i === currentSlide ? "w-5 bg-white" : "w-1.5 bg-white/50 hover:bg-white/80"
+                        }`}
+                        aria-label={`Slide ${i + 1}`}
+                      />
+                    ))}
                   </div>
-                  <div className="flex flex-col">
-                    <span className="text-xs font-bold text-ink-900 leading-tight">Sun Care Hospital</span>
-                    <span className="text-[10px] text-brand-green-700 font-semibold leading-none">
-                      {slides[currentSlide].badge}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Top right slide indicator dots */}
-                <div className="absolute top-3.5 right-3.5 z-20 flex items-center gap-1.5 bg-black/60 backdrop-blur-sm px-2.5 py-1.5 rounded-full border border-white/20">
-                  {slides.map((_, i) => (
-                    <button
-                      key={i}
-                      type="button"
-                      onClick={() => setCurrentSlide(i)}
-                      className={`h-1.5 rounded-full transition-all cursor-pointer ${
-                        i === currentSlide ? "w-5 bg-white" : "w-1.5 bg-white/50 hover:bg-white/80"
-                      }`}
-                      aria-label={`Slide ${i + 1}`}
-                    />
-                  ))}
-                </div>
-
-                {/* Bottom overlay badge: location info */}
-                <div className="absolute bottom-3.5 left-3.5 right-3.5 z-20 bg-white/95 backdrop-blur-sm rounded-lg p-2.5 sm:p-3 border border-gray-100 shadow-subtle flex items-center justify-between gap-3">
-                  <div className="flex items-center gap-2 text-xs font-medium text-ink-800 truncate">
-                    <RiMapPin2Fill size={15} className="text-brand-green-600 flex-shrink-0" aria-hidden="true" />
-                    <span className="truncate">Bosila Garden City, Mohammadpur</span>
-                  </div>
-                  <a
-                    href={`tel:${CONTACT.phone1Raw}`}
-                    className="flex-shrink-0 text-xs font-bold text-brand-green-700 hover:text-brand-green-800 bg-brand-green-100 px-2.5 py-1 rounded-md"
-                  >
-                    24/7 Hotline
-                  </a>
                 </div>
               </div>
             </div>
