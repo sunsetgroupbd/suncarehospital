@@ -36,6 +36,14 @@ export const ADDRESS = {
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3652.5!2d90.3547!3d23.7639!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755bf6fc5c3c1b9%3A0x4b2a94f4b4d3f0b9!2sBosila%20Garden%20City%2C%20Mohammadpur%2C%20Dhaka%201207!5e0!3m2!1sen!2sbd!4v1698000000000!5m2!1sen!2sbd",
 } as const;
 
+export const CORPORATE_ADDRESS = {
+  title: "Corporate Office",
+  titleBn: "করপোরেট অফিস",
+  line1: "27 Shaptak Square",
+  line2: "Road #27, Dhanmondi, Dhaka-1209",
+  full: "27 Shaptak Square, Road #27, Dhanmondi, Dhaka-1209",
+} as const;
+
 export const NAV_LINKS = [
   { label: "Home", labelBn: "হোম", href: "/" },
   { label: "About", labelBn: "পরিচিতি", href: "#about" },

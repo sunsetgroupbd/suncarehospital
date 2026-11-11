@@ -2,8 +2,8 @@
 // components/layout/Footer.tsx
 import Image from "next/image";
 import Link from "next/link";
-import { RiPhoneFill, RiMapPin2Fill, RiHospitalFill, RiFacebookCircleFill, RiFilePdfFill } from "react-icons/ri";
-import { SITE, CONTACT, ADDRESS, NAV_LINKS } from "@/lib/constants";
+import { RiPhoneFill, RiMapPin2Fill, RiHospitalFill, RiFacebookCircleFill, RiFilePdfFill, RiBuilding4Fill } from "react-icons/ri";
+import { SITE, CONTACT, ADDRESS, CORPORATE_ADDRESS, NAV_LINKS } from "@/lib/constants";
 import { useLanguage } from "@/lib/LanguageContext";
 
 export default function Footer() {
@@ -89,11 +89,10 @@ export default function Footer() {
                   href="/sun-care-brochure.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  download="Sun-Care-Hospital-Brochure.pdf"
                   className="inline-flex items-center gap-1.5 text-amber-300 hover:text-amber-200 text-sm font-semibold transition-colors"
                 >
                   <RiFilePdfFill size={15} className="text-red-400" />
-                  <span>{lang === "bn" ? "অফিসিয়াল ব্রোশিওর (PDF)" : "Official Brochure (PDF)"}</span>
+                  <span>{lang === "bn" ? "অফিসিয়াল ব্রোশিওর দেখুন (PDF)" : "View Official Brochure (PDF)"}</span>
                 </a>
               </li>
             </ul>
@@ -105,15 +104,34 @@ export default function Footer() {
               {t.footer.contactInfo}
             </h3>
             <ul className="space-y-3.5">
+              {/* Hospital Location */}
               <li className="flex items-start gap-2.5 text-slate-200 text-sm">
                 <RiMapPin2Fill
                   size={16}
                   className="mt-0.5 flex-shrink-0 text-emerald-400"
                   aria-hidden="true"
                 />
-                <span className="leading-relaxed">
-                  {ADDRESS.full}
-                </span>
+                <div className="leading-relaxed">
+                  <div className="text-[10px] font-bold uppercase tracking-wider text-emerald-400 mb-0.5">
+                    {lang === "bn" ? "হাসপাতাল ক্যাম্পাস" : "Hospital Campus"}
+                  </div>
+                  <span>{ADDRESS.full}</span>
+                </div>
+              </li>
+
+              {/* Corporate Office */}
+              <li className="flex items-start gap-2.5 text-slate-200 text-sm pt-1">
+                <RiBuilding4Fill
+                  size={16}
+                  className="mt-0.5 flex-shrink-0 text-amber-400"
+                  aria-hidden="true"
+                />
+                <div className="leading-relaxed">
+                  <div className="text-[10px] font-bold uppercase tracking-wider text-amber-400 mb-0.5">
+                    {lang === "bn" ? "করপোরেট অফিস" : "Corporate Office"}
+                  </div>
+                  <span>{CORPORATE_ADDRESS.full}</span>
+                </div>
               </li>
               <li>
                 <a

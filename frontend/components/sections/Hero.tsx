@@ -28,11 +28,6 @@ export default function Hero() {
       alt: `${SITE.name} Ground Entrance & Reception View`,
       badge: lang === "bn" ? "রিসেপশন ও ড্রাইভওয়ে" : "Reception & Driveway",
     },
-    {
-      src: "/images/hospital-view.webp",
-      alt: `${SITE.name} Live Construction Site at Bosila Garden City`,
-      badge: lang === "bn" ? "বাস্তব নির্মাণ সাইট" : "On-Site Construction",
-    },
   ];
 
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -152,12 +147,11 @@ export default function Hero() {
                 href="/sun-care-brochure.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                download="Sun-Care-Hospital-Brochure.pdf"
                 className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg border border-gray-200 bg-white hover:bg-gray-50 text-ink-800 hover:text-brand-green-700 hover:border-brand-green-300 text-sm font-semibold transition-all shadow-subtle group"
-                title={lang === "bn" ? "অফিসিয়াল ব্রোশিওর ডাউনলোড করুন (PDF)" : "Download Official Hospital Brochure (PDF)"}
+                title={lang === "bn" ? "অফিসিয়াল ব্রোশিওর দেখুন (PDF)" : "View Official Hospital Brochure (PDF)"}
               >
                 <RiFilePdfFill size={18} className="text-red-600 group-hover:scale-110 transition-transform flex-shrink-0" />
-                <span>{lang === "bn" ? "ব্রোশিওর ডাউনলোড" : "Brochure (PDF)"}</span>
+                <span>{lang === "bn" ? "ব্রোশিওর দেখুন (PDF)" : "View Brochure (PDF)"}</span>
               </a>
             </div>
 

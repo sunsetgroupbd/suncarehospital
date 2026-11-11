@@ -577,12 +577,11 @@ export default function Ownership() {
                 href="/sun-care-brochure.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                download="Sun-Care-Hospital-Brochure.pdf"
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-brand-green-600 hover:bg-brand-green-700 text-xs sm:text-sm font-semibold text-white transition-colors shadow-xs cursor-pointer flex-shrink-0"
-                title={lang === "bn" ? "অফিসিয়াল ব্রোশিওর ডাউনলোড করুন (PDF)" : "Download Official Brochure (PDF)"}
+                title={lang === "bn" ? "অফিসিয়াল ব্রোশিওর দেখুন (PDF)" : "View Official Brochure (PDF)"}
               >
                 <RiFilePdfFill className="w-4 h-4 text-red-300" />
-                <span>{lang === "bn" ? "ব্রোশিওর ডাউনলোড (PDF)" : "Download Brochure (PDF)"}</span>
+                <span>{lang === "bn" ? "ব্রোশিওর দেখুন (PDF)" : "View Brochure (PDF)"}</span>
               </a>
 
               <button
@@ -699,11 +698,10 @@ export default function Ownership() {
                   href="/sun-care-brochure.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  download="Sun-Care-Hospital-Brochure.pdf"
                   className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-slate-900 hover:bg-black text-white font-semibold rounded-lg transition-colors cursor-pointer"
                 >
-                  <RiDownload2Fill className="w-3.5 h-3.5 text-amber-300" />
-                  <span>{lang === "bn" ? "পিডিএফ ডাউনলোড" : "Download PDF"}</span>
+                  <RiFilePdfFill className="w-3.5 h-3.5 text-amber-300" />
+                  <span>{lang === "bn" ? "পিডিএফ ব্রোশিওর দেখুন" : "View PDF Brochure"}</span>
                 </a>
                 <a
                   href={`tel:${CONTACT.phone1Raw}`}

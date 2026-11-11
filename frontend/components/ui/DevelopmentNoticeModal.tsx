@@ -299,17 +299,16 @@ export default function DevelopmentNoticeModal() {
             </a>
           </div>
 
-          {/* Project Brochure Direct Download */}
+          {/* Project Brochure Direct View */}
           <div className="pt-1 text-center">
             <a
               href="/sun-care-brochure.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              download="Sun-Care-Hospital-Brochure.pdf"
               className="inline-flex items-center gap-1.5 text-xs text-brand-green-700 hover:text-brand-green-800 font-semibold"
             >
               <RiFilePdfFill className="w-3.5 h-3.5 text-red-600 flex-shrink-0" />
-              <span>{isBn ? "হাসপাতালের অফিসিয়াল ব্রোশিওর ডাউনলোড করুন (PDF)" : "Download Official Hospital Brochure (PDF)"}</span>
+              <span>{isBn ? "হাসপাতালের অফিসিয়াল ব্রোশিওর দেখুন (PDF)" : "View Official Hospital Brochure (PDF)"}</span>
             </a>
           </div>
         </div>
