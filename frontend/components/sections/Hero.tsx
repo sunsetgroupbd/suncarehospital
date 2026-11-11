@@ -1,35 +1,146 @@
 "use client";
 // components/sections/Hero.tsx
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import {
   RiCalendarFill,
   RiPhoneFill,
   RiCheckboxCircleFill,
   RiMapPin2Fill,
+  RiFilePdfFill,
 } from "react-icons/ri";
-import { FaAmbulance } from "react-icons/fa";
 import Button from "@/components/ui/Button";
 import { useLanguage } from "@/lib/LanguageContext";
 import { CONTACT, SITE } from "@/lib/constants";
 
 export default function Hero() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const trustChips = t.hero.trustChips;
   const headlineLines = t.hero.headline.split("\n");
+
+  const slides = [
+    {
+      src: "/images/sun-care-hospital.webp",
+      alt: `${SITE.name} 10+ Story Hospital Architectural Vision`,
+      badge: lang === "bn" ? "১০+ তলা আধুনিক ভবন" : "10+ Story Modern Tower",
+    },
+    {
+      src: "/images/suncare-hospital-close-view.webp",
+      alt: `${SITE.name} Ground Entrance & Reception View`,
+      badge: lang === "bn" ? "রিসেপশন ও ড্রাইভওয়ে" : "Reception & Driveway",
+    },
+    {
+      src: "/images/hospital-view.webp",
+      alt: `${SITE.name} Live Construction Site at Bosila Garden City`,
+      badge: lang === "bn" ? "বাস্তব নির্মাণ সাইট" : "On-Site Construction",
+    },
+  ];
+
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  // Auto-slide every 3.8s, pausing on user hover
+  useEffect(() => {
+    if (isPaused) return;
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 3800);
+    return () => clearInterval(interval);
+  }, [isPaused, slides.length]);
 
   return (
     <section
       id="home"
-      className="relative bg-surface-50 py-12 lg:py-20"
+      className="relative bg-surface-50 py-10 lg:py-20"
       aria-labelledby="hero-heading"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
 
-          {/* Left Column (7 cols): Clean, Uncluttered Typography */}
-          <div className="lg:col-span-7 flex flex-col gap-6">
+          {/* Right Column (5 cols on desktop, FIRST on mobile via order-1) */}
+          <div className="order-1 lg:order-2 lg:col-span-5 flex justify-center lg:justify-end w-full">
+            <div className="relative w-full max-w-lg flex flex-col gap-3">
+              
+              {/* Auto-Slide Building Image Container (No clunky buttons) */}
+              <div
+                className="relative aspect-[4/3] rounded-xl overflow-hidden border border-gray-100 shadow-elevated bg-slate-900 group"
+                onMouseEnter={() => setIsPaused(true)}
+                onMouseLeave={() => setIsPaused(false)}
+              >
+                {/* Cross-fade stacked slides */}
+                {slides.map((slide, index) => (
+                  <div
+                    key={slide.src}
+                    className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
+                      index === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
+                    }`}
+                  >
+                    <Image
+                      src={slide.src}
+                      alt={slide.alt}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 520px"
+                      className="object-cover"
+                      priority={index === 0}
+                    />
+                  </div>
+                ))}
+
+                {/* Top overlay badge: authentic logo mark & dynamic slide badge */}
+                <div className="absolute top-3.5 left-3.5 z-20 flex items-center gap-2 px-3 py-1.5 bg-white/95 backdrop-blur-sm rounded-lg border border-gray-100 shadow-subtle">
+                  <div className="relative w-5 h-5 flex-shrink-0">
+                    <Image
+                      src="/onlylogo.png"
+                      alt={SITE.shortName}
+                      fill
+                      sizes="20px"
+                      className="object-contain"
+                    />
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-xs font-bold text-ink-900 leading-tight">Sun Care Hospital</span>
+                    <span className="text-[10px] text-brand-green-700 font-semibold leading-none">
+                      {slides[currentSlide].badge}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Top right slide indicator dots */}
+                <div className="absolute top-3.5 right-3.5 z-20 flex items-center gap-1.5 bg-black/60 backdrop-blur-sm px-2.5 py-1.5 rounded-full border border-white/20">
+                  {slides.map((_, i) => (
+                    <button
+                      key={i}
+                      type="button"
+                      onClick={() => setCurrentSlide(i)}
+                      className={`h-1.5 rounded-full transition-all cursor-pointer ${
+                        i === currentSlide ? "w-5 bg-white" : "w-1.5 bg-white/50 hover:bg-white/80"
+                      }`}
+                      aria-label={`Slide ${i + 1}`}
+                    />
+                  ))}
+                </div>
+
+                {/* Bottom overlay badge: location info */}
+                <div className="absolute bottom-3.5 left-3.5 right-3.5 z-20 bg-white/95 backdrop-blur-sm rounded-lg p-2.5 sm:p-3 border border-gray-100 shadow-subtle flex items-center justify-between gap-3">
+                  <div className="flex items-center gap-2 text-xs font-medium text-ink-800 truncate">
+                    <RiMapPin2Fill size={15} className="text-brand-green-600 flex-shrink-0" aria-hidden="true" />
+                    <span className="truncate">Bosila Garden City, Mohammadpur</span>
+                  </div>
+                  <a
+                    href={`tel:${CONTACT.phone1Raw}`}
+                    className="flex-shrink-0 text-xs font-bold text-brand-green-700 hover:text-brand-green-800 bg-brand-green-100 px-2.5 py-1 rounded-md"
+                  >
+                    24/7 Hotline
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Left Column (7 cols on desktop, SECOND on mobile via order-2) */}
+          <div className="order-2 lg:order-1 lg:col-span-7 flex flex-col gap-6">
             
-            {/* Clean category label — NO lines, NO clunky pills */}
+            {/* Clean category label */}
             <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-brand-green-700">
               <span className="w-2 h-2 rounded-full bg-brand-green-600 inline-block" aria-hidden="true" />
               <span>Sun Care Hospital & Diagnostic Center</span>
@@ -55,8 +166,8 @@ export default function Hero() {
               {t.hero.subheadline}
             </p>
 
-            {/* CTAs with Flat Solid Buttons (No drop shadows) */}
-            <div className="flex flex-col sm:flex-row gap-3 pt-1">
+            {/* CTAs including Official Brochure Download */}
+            <div className="flex flex-col sm:flex-row flex-wrap gap-3 pt-1">
               <Button href="#appointment" size="lg" variant="primary">
                 <RiCalendarFill size={18} aria-hidden="true" />
                 <span>{t.hero.ctaPrimary}</span>
@@ -69,9 +180,20 @@ export default function Hero() {
                 <RiPhoneFill size={18} aria-hidden="true" />
                 <span>{t.hero.ctaSecondary}</span>
               </Button>
+              <a
+                href="/sun-care-brochure.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                download="Sun-Care-Hospital-Brochure.pdf"
+                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg border border-gray-200 bg-white hover:bg-gray-50 text-ink-800 hover:text-brand-green-700 hover:border-brand-green-300 text-sm font-semibold transition-all shadow-subtle group"
+                title={lang === "bn" ? "অফিসিয়াল ব্রোশিওর ডাউনলোড করুন (PDF)" : "Download Official Hospital Brochure (PDF)"}
+              >
+                <RiFilePdfFill size={18} className="text-red-600 group-hover:scale-110 transition-transform flex-shrink-0" />
+                <span>{lang === "bn" ? "ব্রোশিওর ডাউনলোড" : "Brochure (PDF)"}</span>
+              </a>
             </div>
 
-            {/* Trust chips — NO dividing border line, clean chips */}
+            {/* Trust chips */}
             <div className="flex flex-wrap gap-2.5 pt-2">
               {trustChips.map((chip) => (
                 <div
@@ -86,71 +208,6 @@ export default function Hero() {
                   <span>{chip}</span>
                 </div>
               ))}
-            </div>
-          </div>
-
-          {/* Right Column (5 cols): REAL Hospital Building Image Showcase */}
-          <div className="lg:col-span-5 flex justify-center lg:justify-end">
-            <div className="relative w-full max-w-lg">
-              
-              {/* Architectural Building Image Container */}
-              <div className="relative aspect-[4/3] rounded-xl overflow-hidden border border-gray-100 shadow-elevated bg-white">
-                <Image
-                  src="/images/Sun Care Hospital Exterior.webp"
-                  alt={`${SITE.name} building exterior in Mohammadpur`}
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 520px"
-                  className="object-cover"
-                  priority
-                />
-
-                {/* Top overlay badge: authentic logo mark */}
-                <div className="absolute top-4 left-4 flex items-center gap-2 px-3 py-1.5 bg-white/95 backdrop-blur-sm rounded-lg border border-gray-100 shadow-subtle">
-                  <div className="relative w-5 h-5 flex-shrink-0">
-                    <Image
-                      src="/onlylogo.png"
-                      alt={SITE.shortName}
-                      fill
-                      sizes="20px"
-                      className="object-contain"
-                    />
-                  </div>
-                  <span className="text-xs font-bold text-ink-900">Sun Care Hospital</span>
-                </div>
-
-                {/* Bottom overlay badge: location info */}
-                <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-sm rounded-lg p-3 border border-gray-100 shadow-subtle flex items-center justify-between gap-3">
-                  <div className="flex items-center gap-2 text-xs font-medium text-ink-800 truncate">
-                    <RiMapPin2Fill size={15} className="text-brand-green-600 flex-shrink-0" aria-hidden="true" />
-                    <span className="truncate">Bosila Garden City, Mohammadpur</span>
-                  </div>
-                  <a
-                    href={`tel:${CONTACT.phone1Raw}`}
-                    className="flex-shrink-0 text-xs font-bold text-brand-green-700 hover:text-brand-green-800 bg-brand-green-100 px-2.5 py-1 rounded-md"
-                  >
-                    24/7 Hotline
-                  </a>
-                </div>
-              </div>
-
-              {/* Emergency response card below building image */}
-              <div className="mt-4 bg-white rounded-xl p-4 border border-gray-100 shadow-subtle flex items-center justify-between gap-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-emerald-50 border border-emerald-100 flex items-center justify-center text-brand-green-700">
-                    <FaAmbulance size={18} aria-hidden="true" />
-                  </div>
-                  <div>
-                    <div className="text-xs font-bold text-ink-900">Emergency & Ambulance Service</div>
-                    <div className="text-[11px] text-ink-600">Immediate response across Dhaka</div>
-                  </div>
-                </div>
-                <a
-                  href={`tel:${CONTACT.phone1Raw}`}
-                  className="text-xs font-bold text-white bg-brand-green-600 hover:bg-brand-green-700 px-3 py-2 rounded-lg transition-colors flex-shrink-0"
-                >
-                  Call 24/7
-                </a>
-              </div>
             </div>
           </div>
 

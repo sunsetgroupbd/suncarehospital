@@ -1,5 +1,6 @@
 "use client";
 // components/sections/ContactLocation.tsx
+import Image from "next/image";
 import { RiMapPin2Fill, RiPhoneFill, RiCompass3Fill, RiFacebookCircleFill } from "react-icons/ri";
 import SectionTag from "@/components/ui/SectionTag";
 import Button from "@/components/ui/Button";
@@ -7,7 +8,7 @@ import { useLanguage } from "@/lib/LanguageContext";
 import { CONTACT, ADDRESS } from "@/lib/constants";
 
 export default function ContactLocation() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const mapsDirections = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ADDRESS.mapQuery)}`;
 
   return (
@@ -157,6 +158,32 @@ export default function ContactLocation() {
                 >
                   Open in Google Maps &rarr;
                 </a>
+              </div>
+            </div>
+
+            {/* Entrance Landmark Preview Card */}
+            <div className="mt-4 bg-white rounded-xl border border-gray-100 shadow-subtle p-3.5 flex flex-col sm:flex-row items-center gap-4">
+              <div className="relative w-full sm:w-48 h-32 rounded-lg overflow-hidden flex-shrink-0 bg-slate-900 border border-gray-200">
+                <Image
+                  src="/images/suncare-hospital-close-view.webp"
+                  alt="Sun Care Hospital Front Entrance on 40 Feet Avenue Road"
+                  fill
+                  sizes="(max-width: 640px) 100vw, 200px"
+                  className="object-cover"
+                />
+              </div>
+              <div className="flex-1 min-w-0 text-left">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-brand-green-800 bg-brand-green-50 px-2 py-0.5 rounded border border-brand-green-200">
+                  {lang === "bn" ? "হাসপাতাল ল্যান্ডমার্ক" : "Facility Landmark"}
+                </span>
+                <h4 className="text-sm font-bold text-ink-900 mt-1">
+                  {lang === "bn" ? "সান কেয়ার হাসপাতাল প্রধান প্রবেশদ্বার ও রিসেপশন" : "Main Hospital Entrance & Reception"}
+                </h4>
+                <p className="text-xs text-ink-600 mt-1 leading-relaxed">
+                  {lang === "bn"
+                    ? "৪০ ফিট এভিনিউ রোডে সরাসরি অ্যাম্বুলেন্স প্রবেশমুখ, নান্দনিক অভ্যর্থনা লাউঞ্জ ও নিবেদিত পেশেন্ট ড্রপ-অফ জোন।"
+                    : "Direct 40-ft avenue street access with dedicated emergency ambulance ramp and welcoming reception lounge."}
+                </p>
               </div>
             </div>
           </div>

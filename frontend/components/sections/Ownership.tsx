@@ -15,6 +15,10 @@ import {
   RiCloseLine,
   RiMapPin2Fill,
   RiWhatsappFill,
+  RiHammerFill,
+  RiDoorOpenFill,
+  RiDownload2Fill,
+  RiFilePdfFill,
 } from "react-icons/ri";
 import { TbCurrencyTaka } from "react-icons/tb";
 import SectionTag from "@/components/ui/SectionTag";
@@ -444,6 +448,115 @@ export default function Ownership() {
           </div>
         </div>
 
+        {/* Tangible Real Estate & Rapid Construction Progress Showcase */}
+        <div className="mb-14 bg-white rounded-2xl border border-gray-200 p-6 sm:p-8 lg:p-10 shadow-subtle">
+          <div className="max-w-3xl mb-8">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-green-50 text-brand-green-800 text-xs font-bold border border-brand-green-200 mb-2.5">
+              <RiHammerFill className="w-3.5 h-3.5 text-amber-600" />
+              <span>{lang === "bn" ? "বাস্তব অবকাঠামো ও নির্মাণ অগ্রগতি" : "Tangible Asset & On-Site Construction"}</span>
+            </span>
+            <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-ink-900 tracking-tight">
+              {lang === "bn"
+                ? "কাগজে-কলমে নয়, বাস্তবে দৃশ্যমান ১০+ তলা আধুনিক নিজস্ব হাসপাতাল"
+                : "Not Just Paperwork: A Tangible 10+ Story Hospital Rising on Own Land"}
+            </h3>
+            <p className="text-xs sm:text-sm text-ink-600 mt-2 leading-relaxed">
+              {lang === "bn"
+                ? "মোহাম্মদপুর বসিলা গার্ডেন সিটির ৪০ ফিট এভিনিউ রোডে সান কেয়ার হাসপাতালের বহুতল ভবনের নির্মাণ কাজ পুরোদমে এগিয়ে চলেছে। সাফ-কবলা রেজিস্ট্রি দলিলের মাধ্যমে নিশ্চিত করুন আপনার আজীবন স্থায়ী সম্পদ।"
+                : "Active multi-story concrete superstructure advancing at Bosila Garden City, Mohammadpur. Saf-Kabala deed registration secures your perpetual real-estate healthcare asset."}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Card 1: Completed Architectural Vision */}
+            <div className="group rounded-xl overflow-hidden border border-gray-200 bg-surface-50 flex flex-col">
+              <div className="relative aspect-[4/3] w-full overflow-hidden bg-slate-900">
+                <Image
+                  src="/images/sun-care-hospital.webp"
+                  alt="Sun Care Hospital 10-Story Architectural Building Vision"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 380px"
+                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute top-2.5 left-2.5 px-2.5 py-1 rounded-md bg-black/75 backdrop-blur-sm text-white text-[11px] font-semibold flex items-center gap-1.5">
+                  <RiBuilding4Fill className="w-3.5 h-3.5 text-brand-green-400" />
+                  <span>{lang === "bn" ? "পূর্ণাঙ্গ ভবন মডেল" : "Architectural Vision"}</span>
+                </div>
+              </div>
+              <div className="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <h4 className="font-bold text-ink-900 text-sm mb-1">
+                    {lang === "bn" ? "১০+ তলা আধুনিক টাওয়ার" : "10+ Story Modern Tower"}
+                  </h4>
+                  <p className="text-xs text-ink-600 leading-relaxed">
+                    {lang === "bn"
+                      ? "আধুনিক কাঁচের ফেসাড, রুফটপ গার্ডেন এবং ১০০+ শয্যা বিশিষ্ট আন্তর্জাতিক মানের হাসপাতাল।"
+                      : "Modern glass curtain facade, rooftop canopy, and 100+ hospital beds."}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Card 2: Main Entrance & Reception */}
+            <div className="group rounded-xl overflow-hidden border border-gray-200 bg-surface-50 flex flex-col">
+              <div className="relative aspect-[4/3] w-full overflow-hidden bg-slate-900">
+                <Image
+                  src="/images/suncare-hospital-close-view.webp"
+                  alt="Sun Care Hospital Main Entrance and Reception Facade"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 380px"
+                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute top-2.5 left-2.5 px-2.5 py-1 rounded-md bg-black/75 backdrop-blur-sm text-white text-[11px] font-semibold flex items-center gap-1.5">
+                  <RiDoorOpenFill className="w-3.5 h-3.5 text-brand-green-400" />
+                  <span>{lang === "bn" ? "প্রধান প্রবেশদ্বার" : "Main Entrance"}</span>
+                </div>
+              </div>
+              <div className="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <h4 className="font-bold text-ink-900 text-sm mb-1">
+                    {lang === "bn" ? "রিসেপশন ও জরুরি ড্রাইভওয়ে" : "Reception & Driveway"}
+                  </h4>
+                  <p className="text-xs text-ink-600 leading-relaxed">
+                    {lang === "bn"
+                      ? "৪০ ফুট এভিনিউ রোডে সরাসরি অ্যাম্বুলেন্স র‌্যাম্প ও নান্দনিক ড্রাইভওয়ে প্রবেশমুখ।"
+                      : "40-ft avenue road access with direct emergency ambulance ramp and grand reception."}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Card 3: Live On-Site Construction Milestone */}
+            <div className="group rounded-xl overflow-hidden border border-amber-200 bg-amber-50/30 flex flex-col">
+              <div className="relative aspect-[4/3] w-full overflow-hidden bg-slate-900">
+                <Image
+                  src="/images/hospital-view.webp"
+                  alt="Sun Care Hospital Live Construction Site at Mohammadpur Dhaka"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 380px"
+                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute top-2.5 left-2.5 px-2.5 py-1 rounded-md bg-black/75 backdrop-blur-sm text-white text-[11px] font-semibold flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
+                  <span>{lang === "bn" ? "বাস্তব সাইট ছবি" : "Live Site Photo"}</span>
+                </div>
+              </div>
+              <div className="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <h4 className="font-bold text-ink-900 text-sm mb-1">
+                    {lang === "bn" ? "দৃশ্যমান বাস্তব নির্মাণ অগ্রগতি" : "Physical Construction in Progress"}
+                  </h4>
+                  <p className="text-xs text-ink-600 leading-relaxed">
+                    {lang === "bn"
+                      ? "বসিলা গার্ডেন সিটিতে দ্রুততম গতিতে নিজস্ব ভবনের স্ট্রাকচারাল নির্মাণ সম্পন্ন হচ্ছে।"
+                      : "Multi-story reinforced superstructure actively rising on verified hospital land."}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Guaranteed Services Strip */}
         <div className="bg-white rounded-xl border border-gray-100 p-6 sm:p-8 mb-12 shadow-subtle">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-6 pb-6 border-b border-gray-100">
@@ -458,15 +571,29 @@ export default function Ownership() {
               </p>
             </div>
 
-            {/* View Official Leaflet Button */}
-            <button
-              type="button"
-              onClick={() => setLeafletOpen(true)}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-surface-100 hover:bg-surface-200 text-xs sm:text-sm font-semibold text-ink-900 transition-colors border border-gray-200 cursor-pointer flex-shrink-0"
-            >
-              <RiEyeLine className="w-4 h-4 text-brand-green-600" />
-              <span>{ownership.viewLeaflet}</span>
-            </button>
+            {/* View Official Leaflet and Download Brochure Buttons */}
+            <div className="flex flex-wrap items-center gap-2.5">
+              <a
+                href="/sun-care-brochure.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                download="Sun-Care-Hospital-Brochure.pdf"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-brand-green-600 hover:bg-brand-green-700 text-xs sm:text-sm font-semibold text-white transition-colors shadow-xs cursor-pointer flex-shrink-0"
+                title={lang === "bn" ? "অফিসিয়াল ব্রোশিওর ডাউনলোড করুন (PDF)" : "Download Official Brochure (PDF)"}
+              >
+                <RiFilePdfFill className="w-4 h-4 text-red-300" />
+                <span>{lang === "bn" ? "ব্রোশিওর ডাউনলোড (PDF)" : "Download Brochure (PDF)"}</span>
+              </a>
+
+              <button
+                type="button"
+                onClick={() => setLeafletOpen(true)}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-surface-100 hover:bg-surface-200 text-xs sm:text-sm font-semibold text-ink-900 transition-colors border border-gray-200 cursor-pointer flex-shrink-0"
+              >
+                <RiEyeLine className="w-4 h-4 text-brand-green-600" />
+                <span>{ownership.viewLeaflet}</span>
+              </button>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -567,13 +694,25 @@ export default function Ownership() {
                   ? "সাফ-কবলা দলিলের মাধ্যমে আজীবন মালিকানা ও ২০ জনের চিকিৎসা সুবিধা।"
                   : "Saf-Kabala registered permanent deed ownership with at-cost medical privileges."}
               </span>
-              <a
-                href={`tel:${CONTACT.phone1Raw}`}
-                className="inline-flex items-center gap-1.5 px-4 py-2 bg-brand-green-600 hover:bg-brand-green-700 text-white font-semibold rounded-lg transition-colors"
-              >
-                <RiPhoneFill className="w-3.5 h-3.5" />
-                <span>{lang === "bn" ? "ইনভেস্টমেন্ট ডেস্কে কল করুন" : "Call Investment Desk"}</span>
-              </a>
+              <div className="flex items-center gap-2 flex-shrink-0">
+                <a
+                  href="/sun-care-brochure.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  download="Sun-Care-Hospital-Brochure.pdf"
+                  className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-slate-900 hover:bg-black text-white font-semibold rounded-lg transition-colors cursor-pointer"
+                >
+                  <RiDownload2Fill className="w-3.5 h-3.5 text-amber-300" />
+                  <span>{lang === "bn" ? "পিডিএফ ডাউনলোড" : "Download PDF"}</span>
+                </a>
+                <a
+                  href={`tel:${CONTACT.phone1Raw}`}
+                  className="inline-flex items-center gap-1.5 px-4 py-2 bg-brand-green-600 hover:bg-brand-green-700 text-white font-semibold rounded-lg transition-colors"
+                >
+                  <RiPhoneFill className="w-3.5 h-3.5" />
+                  <span>{lang === "bn" ? "ইনভেস্টমেন্ট ডেস্কে কল করুন" : "Call Investment Desk"}</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>

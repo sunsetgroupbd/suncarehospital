@@ -2,7 +2,7 @@
 // components/layout/Footer.tsx
 import Image from "next/image";
 import Link from "next/link";
-import { RiPhoneFill, RiMapPin2Fill, RiHospitalFill, RiFacebookCircleFill } from "react-icons/ri";
+import { RiPhoneFill, RiMapPin2Fill, RiHospitalFill, RiFacebookCircleFill, RiFilePdfFill } from "react-icons/ri";
 import { SITE, CONTACT, ADDRESS, NAV_LINKS } from "@/lib/constants";
 import { useLanguage } from "@/lib/LanguageContext";
 
@@ -82,6 +82,18 @@ export default function Footer() {
                   className="text-emerald-400 text-sm font-semibold hover:text-emerald-300 transition-colors"
                 >
                   {t.nav.bookAppointment}
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/sun-care-brochure.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  download="Sun-Care-Hospital-Brochure.pdf"
+                  className="inline-flex items-center gap-1.5 text-amber-300 hover:text-amber-200 text-sm font-semibold transition-colors"
+                >
+                  <RiFilePdfFill size={15} className="text-red-400" />
+                  <span>{lang === "bn" ? "অফিসিয়াল ব্রোশিওর (PDF)" : "Official Brochure (PDF)"}</span>
                 </a>
               </li>
             </ul>

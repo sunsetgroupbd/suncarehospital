@@ -6,7 +6,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
-import { RiCloseLine, RiPhoneFill, RiMapPin2Fill, RiInformationFill, RiArrowRightLine } from "react-icons/ri";
+import { RiCloseLine, RiPhoneFill, RiMapPin2Fill, RiInformationFill, RiArrowRightLine, RiFilePdfFill } from "react-icons/ri";
 import { CONTACT, ADDRESS, SITE } from "@/lib/constants";
 import { useLanguage } from "@/lib/LanguageContext";
 
@@ -191,6 +191,30 @@ export default function DevelopmentNoticeModal() {
             )}
           </div>
 
+          {/* Construction Progress Real On-Site Photo */}
+          <div className="relative rounded-xl overflow-hidden border border-gray-200 bg-surface-100 shadow-xs">
+            <div className="relative aspect-[16/10] w-full">
+              <Image
+                src="/images/hospital-view.webp"
+                alt="Sun Care Hospital Construction Progress at Bosila Garden City, Mohammadpur"
+                fill
+                sizes="(max-width: 640px) 100vw, 480px"
+                className="object-cover"
+              />
+              <div className="absolute top-2.5 left-2.5 bg-black/75 backdrop-blur-sm text-white text-[11px] font-semibold px-2.5 py-1 rounded-md flex items-center gap-1.5 shadow-sm">
+                <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
+                <span>{isBn ? "বাস্তব নির্মাণ সাইট অগ্রগতি" : "On-Site Construction Progress"}</span>
+              </div>
+              <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/85 via-black/45 to-transparent p-2.5 sm:p-3 text-white">
+                <p className="text-[11px] sm:text-xs font-medium leading-tight">
+                  {isBn
+                    ? "মোহাম্মদপুর বসিলা গার্ডেন সিটিতে নিজস্ব বহুতল হাসপাতালের দ্রুত নির্মাণ কাজ চলমান।"
+                    : "Independent multi-story hospital building actively rising at Bosila Garden City, Mohammadpur."}
+                </p>
+              </div>
+            </div>
+          </div>
+
           {/* Halal Income Promo Banner inside Dev Notice */}
           <div className="bg-surface-50 border border-gray-200 rounded-xl p-3 flex items-center justify-between gap-3 text-ink-900">
             <div className="flex items-center gap-2.5 min-w-0">
@@ -272,6 +296,20 @@ export default function DevelopmentNoticeModal() {
             >
               <RiPhoneFill className="w-4 h-4 flex-shrink-0" />
               <span>{isBn ? "হটলাইনে কল করুন" : "Call Hotline"}</span>
+            </a>
+          </div>
+
+          {/* Project Brochure Direct Download */}
+          <div className="pt-1 text-center">
+            <a
+              href="/sun-care-brochure.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              download="Sun-Care-Hospital-Brochure.pdf"
+              className="inline-flex items-center gap-1.5 text-xs text-brand-green-700 hover:text-brand-green-800 font-semibold"
+            >
+              <RiFilePdfFill className="w-3.5 h-3.5 text-red-600 flex-shrink-0" />
+              <span>{isBn ? "হাসপাতালের অফিসিয়াল ব্রোশিওর ডাউনলোড করুন (PDF)" : "Download Official Hospital Brochure (PDF)"}</span>
             </a>
           </div>
         </div>

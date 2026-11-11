@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     description:
       "Visit our hospital on Avenue Road (40 Feet), Bosila Garden City, Mohammadpur, Dhaka-1207. 24/7 emergency hotlines and online appointment booking.",
     url: `${SITE.url}/contact`,
-    images: [{ url: "/images/Sun Care Hospital Exterior.webp", width: 993, height: 1584 }],
+    images: [{ url: "/images/suncare-hospital-close-view.webp", width: 1672, height: 941, alt: "Sun Care Hospital Entrance in Mohammadpur" }],
   },
 };
 

@@ -1,7 +1,14 @@
 "use client";
 // components/sections/About.tsx
+import { useState } from "react";
 import Image from "next/image";
-import { RiHeartPulseFill, RiHospitalFill } from "react-icons/ri";
+import {
+  RiHeartPulseFill,
+  RiHospitalFill,
+  RiBuilding4Fill,
+  RiDoorOpenFill,
+  RiHammerFill,
+} from "react-icons/ri";
 import SectionTag from "@/components/ui/SectionTag";
 import StatCounter from "@/components/ui/StatCounter";
 import { useLanguage } from "@/lib/LanguageContext";
@@ -9,6 +16,31 @@ import { SITE } from "@/lib/constants";
 
 export default function About() {
   const { t, lang } = useLanguage();
+
+  const [activeTab, setActiveTab] = useState<"vision" | "entrance" | "construction">("vision");
+
+  const views = {
+    vision: {
+      src: "/images/sun-care-hospital.webp",
+      alt: `${SITE.name} 10-Story Architectural Vision`,
+      title: lang === "bn" ? "পূর্ণাঙ্গ ভবন" : "Full Vision",
+      caption: lang === "bn" ? "১০+ তলা আধুনিক মাল্টি-স্পেশালিটি হাসপাতাল কমপ্লেক্স" : "10+ Story Modern Multi-Specialty Hospital Complex",
+    },
+    entrance: {
+      src: "/images/suncare-hospital-close-view.webp",
+      alt: `${SITE.name} Main Entrance & Reception`,
+      title: lang === "bn" ? "প্রবেশদ্বার" : "Main Entrance",
+      caption: lang === "bn" ? "গ্রাউন্ড রিসেপশন, জরুরি ড্রাইভওয়ে ও আধুনিক এন্ট্রান্স" : "Ground Reception, Emergency Driveway & Modern Entrance",
+    },
+    construction: {
+      src: "/images/hospital-view.webp",
+      alt: `${SITE.name} Physical Building Construction Site at Mohammadpur`,
+      title: lang === "bn" ? "বাস্তব নির্মাণ" : "Construction",
+      caption: lang === "bn" ? "বসিলা গার্ডেন সিটিতে নিজস্ব জমিতে দ্রুত নির্মাণ কাজ চলমান" : "Rapid on-site construction progressing at Bosila Garden City",
+    },
+  };
+
+  const current = views[activeTab];
 
   const stats = [
     { value: "100+", label: lang === "bn" ? "আধুনিক হাসপাতাল শয্যা" : "Modern Hospital Beds" },
@@ -26,19 +58,74 @@ export default function About() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
-          {/* Left: Hospital Infrastructure & Clinical Care Vector Illustration */}
+          {/* Left: Authentic Hospital Infrastructure & Multi-View Showcase */}
           <div className="lg:col-span-5 flex justify-center">
-            <div className="relative w-full max-w-lg flex flex-col gap-3.5">
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-gray-200 bg-surface-50 shadow-subtle p-2">
+            <div className="relative w-full max-w-lg flex flex-col gap-3">
+              
+              {/* Tab selector */}
+              <div className="flex items-center justify-between p-1 bg-surface-50 rounded-xl border border-gray-200 shadow-xs">
+                <button
+                  type="button"
+                  onClick={() => setActiveTab("vision")}
+                  className={`flex-1 flex items-center justify-center gap-1.5 py-1.5 px-2 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+                    activeTab === "vision"
+                      ? "bg-brand-green-600 text-white shadow-xs"
+                      : "text-ink-600 hover:text-ink-900 hover:bg-white"
+                  }`}
+                >
+                  <RiBuilding4Fill size={14} />
+                  <span>{views.vision.title}</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setActiveTab("entrance")}
+                  className={`flex-1 flex items-center justify-center gap-1.5 py-1.5 px-2 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+                    activeTab === "entrance"
+                      ? "bg-brand-green-600 text-white shadow-xs"
+                      : "text-ink-600 hover:text-ink-900 hover:bg-white"
+                  }`}
+                >
+                  <RiDoorOpenFill size={14} />
+                  <span>{views.entrance.title}</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setActiveTab("construction")}
+                  className={`flex-1 flex items-center justify-center gap-1.5 py-1.5 px-2 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+                    activeTab === "construction"
+                      ? "bg-amber-600 text-white shadow-xs"
+                      : "text-ink-600 hover:text-ink-900 hover:bg-white"
+                  }`}
+                >
+                  <RiHammerFill size={14} />
+                  <span>{views.construction.title}</span>
+                </button>
+              </div>
+
+              {/* Main Image Display */}
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-gray-200 bg-slate-900 shadow-elevated">
                 <Image
-                  src="/illustration.svg"
-                  alt={`${SITE.name} Hospital & Diagnostic Infrastructure`}
+                  key={current.src}
+                  src={current.src}
+                  alt={current.alt}
                   fill
                   sizes="(max-width: 1024px) 100vw, 480px"
-                  className="object-contain"
+                  className="object-cover transition-opacity duration-300"
                   priority
-                  unoptimized
                 />
+
+                {/* Status watermark */}
+                <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-sm px-2.5 py-1 rounded-lg border border-gray-100 shadow-xs flex items-center gap-2">
+                  <span className={`w-2 h-2 rounded-full ${activeTab === "construction" ? "bg-amber-500 animate-pulse" : "bg-brand-green-600"}`} />
+                  <span className="text-[11px] font-bold text-ink-900">{current.title}</span>
+                </div>
+
+                {/* Bottom caption overlay */}
+                <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent p-3 text-white">
+                  <p className="text-xs font-medium leading-snug drop-shadow-sm">
+                    {current.caption}
+                  </p>
+                </div>
               </div>
               
               {/* Reassurance text */}
