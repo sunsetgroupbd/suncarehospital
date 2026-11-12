@@ -472,7 +472,7 @@ export default function Ownership() {
             <div className="group rounded-xl overflow-hidden border border-gray-200 bg-surface-50 flex flex-col">
               <div className="relative aspect-[4/3] w-full overflow-hidden bg-slate-900">
                 <Image
-                  src="/images/sun-care-hospital.webp"
+                  src="/images/Sun Care Hospital.webp"
                   alt="Sun Care Hospital 10-Story Architectural Building Vision"
                   fill
                   sizes="(max-width: 768px) 100vw, 380px"
@@ -501,7 +501,7 @@ export default function Ownership() {
             <div className="group rounded-xl overflow-hidden border border-gray-200 bg-surface-50 flex flex-col">
               <div className="relative aspect-[4/3] w-full overflow-hidden bg-slate-900">
                 <Image
-                  src="/images/suncare-hospital-close-view.webp"
+                  src="/images/Suncare hospital close view.webp"
                   alt="Sun Care Hospital Main Entrance and Reception Facade"
                   fill
                   sizes="(max-width: 768px) 100vw, 380px"
@@ -530,7 +530,7 @@ export default function Ownership() {
             <div className="group rounded-xl overflow-hidden border border-amber-200 bg-amber-50/30 flex flex-col">
               <div className="relative aspect-[4/3] w-full overflow-hidden bg-slate-900">
                 <Image
-                  src="/images/hospital-view.webp"
+                  src="/images/Hospital view.webp"
                   alt="Sun Care Hospital Live Construction Site at Mohammadpur Dhaka"
                   fill
                   sizes="(max-width: 768px) 100vw, 380px"

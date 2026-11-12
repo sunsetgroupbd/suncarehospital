@@ -195,7 +195,7 @@ export default function DevelopmentNoticeModal() {
           <div className="relative rounded-xl overflow-hidden border border-gray-200 bg-surface-100 shadow-xs">
             <div className="relative aspect-[16/10] w-full">
               <Image
-                src="/images/hospital-view.webp"
+                src="/images/Hospital view.webp"
                 alt="Sun Care Hospital Construction Progress at Bosila Garden City, Mohammadpur"
                 fill
                 sizes="(max-width: 640px) 100vw, 480px"

@@ -165,7 +165,7 @@ export default function ContactLocation() {
             <div className="mt-4 bg-white rounded-xl border border-gray-100 shadow-subtle p-3.5 flex flex-col sm:flex-row items-center gap-4">
               <div className="relative w-full sm:w-48 h-32 rounded-lg overflow-hidden flex-shrink-0 bg-slate-900 border border-gray-200">
                 <Image
-                  src="/images/suncare-hospital-close-view.webp"
+                  src="/images/Suncare hospital close view.webp"
                   alt="Sun Care Hospital Front Entrance on 40 Feet Avenue Road"
                   fill
                   sizes="(max-width: 640px) 100vw, 200px"

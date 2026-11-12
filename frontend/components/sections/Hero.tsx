@@ -19,12 +19,12 @@ export default function Hero() {
 
   const slides = [
     {
-      src: "/images/sun-care-hospital.webp",
+      src: "/images/Sun Care Hospital.webp",
       alt: `${SITE.name} 10+ Story Hospital Architectural Vision`,
       badge: lang === "bn" ? "১০+ তলা আধুনিক ভবন" : "10+ Story Modern Tower",
     },
     {
-      src: "/images/suncare-hospital-close-view.webp",
+      src: "/images/Suncare hospital close view.webp",
       alt: `${SITE.name} Ground Entrance & Reception View`,
       badge: lang === "bn" ? "রিসেপশন ও ড্রাইভওয়ে" : "Reception & Driveway",
     },

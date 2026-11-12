@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     description:
       "General Medicine, Cardiology, Gynecology, Pediatrics, Orthopedics, Neurology, ENT, automated pathology lab, and 24/7 ICU in Mohammadpur, Dhaka.",
     url: `${SITE.url}/departments`,
-    images: [{ url: "/images/sun-care-hospital.webp", width: 1199, height: 1312, alt: "Sun Care Hospital Specialties & Facilities" }],
+    images: [{ url: "/images/Sun Care Hospital.webp", width: 1199, height: 1312, alt: "Sun Care Hospital Specialties & Facilities" }],
   },
 };
 

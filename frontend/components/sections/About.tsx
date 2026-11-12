@@ -31,7 +31,7 @@ export default function About() {
             <div className="relative w-full max-w-lg flex flex-col gap-3.5">
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-gray-200 bg-slate-900 shadow-elevated">
                 <Image
-                  src="/images/sun-care-hospital.webp"
+                  src="/images/Sun Care Hospital.webp"
                   alt={`${SITE.name} 10+ Story Hospital Complex`}
                   fill
                   sizes="(max-width: 1024px) 100vw, 480px"
