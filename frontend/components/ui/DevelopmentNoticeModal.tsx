@@ -88,7 +88,7 @@ export default function DevelopmentNoticeModal() {
       />
 
       {/* Modal Dialog Card */}
-      <div className="relative w-full max-w-lg my-auto bg-white rounded-xl shadow-subtle border border-gray-100 overflow-hidden flex flex-col max-h-[calc(100dvh-2rem)] sm:max-h-[calc(100dvh-3rem)] transform transition-all duration-200">
+      <div className="relative w-full max-w-xl sm:max-w-2xl my-auto bg-white rounded-xl sm:rounded-2xl shadow-elevated border border-gray-100 overflow-hidden flex flex-col max-h-[calc(100dvh-2rem)] sm:max-h-[calc(100dvh-3rem)] transform transition-all duration-200">
         {/* Pinned Modal Header Bar */}
         <div className="flex items-center justify-between px-4 py-3 sm:px-6 sm:py-3.5 border-b border-gray-100 bg-white flex-shrink-0">
           <div className="flex items-center gap-2.5 min-w-0">
@@ -198,7 +198,7 @@ export default function DevelopmentNoticeModal() {
                 src="/images/Hospital view.webp"
                 alt="Sun Care Hospital Construction Progress at Bosila Garden City, Mohammadpur"
                 fill
-                sizes="(max-width: 640px) 100vw, 480px"
+                sizes="(max-width: 640px) 100vw, 672px"
                 className="object-cover"
               />
               <div className="absolute top-2.5 left-2.5 bg-black/75 backdrop-blur-sm text-white text-[11px] font-semibold px-2.5 py-1 rounded-md flex items-center gap-1.5 shadow-sm">
